@@ -23,7 +23,6 @@ Get series ids for a given event
 }
 \examples{
 \donttest{
-series <- get_series(1866) ## VALORANT Champions 2022 - Playoffs
-dplyr::glimpse(series)
+get_series(1866) ## VALORANT Champions 2022 - Playoffs
 }
 }

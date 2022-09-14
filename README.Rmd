@@ -1,7 +1,5 @@
 ---
 output: github_document
-execute:
-  eval: false
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -32,5 +30,7 @@ knitr::opts_chunk$set(
 You can install the development version of `{valorantr}` with:
 
 ```{r}
+#| label: install
+#| eval: false
 remotes::install_github("tonyelhabr/valorantr")
 ```

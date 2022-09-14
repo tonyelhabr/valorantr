@@ -21,41 +21,56 @@ prettify_df <- function(df) {
 }
 
 prettify_nested_dfs <- function(x) {
-  
-  nms <- names(x)
-  if (length(nms) > 0) {
-    names(x) <- janitor::make_clean_names(nms)
+  expected_x <- list("ZETA", "OpTic", NULL)
+  if (identical(x, expected_x)) {
+    browser()
   }
-  
-  nms <- colnames(x)
-  if (length(nms) > 0) {
-    x <- janitor::clean_names(x)
-  }
-  
   is_df <- is.data.frame(x)
   is_lst <- is.list(x)
+  
   if (isFALSE(is_df) & isFALSE(is_lst)) {
     return(x)
   }
   
-  if (isTRUE(is_df)) {
-    clss <- purrr::map(x, class)
-    clss_w_df <- clss |> purrr::keep(~any(.x == "data.frame"))
-    
-    if (length(clss_w_df) > 0) {
-      cols <- names(clss_w_df)
-      for(col in cols) {
-        x[[col]] <- prettify_nested_dfs(x[[col]])
-      }
+  nms <- names(x)
+  has_nms <- !is.null(nms) & length(nms) > 0
+  # if (isTRUE(is_lst) & isFALSE(has_nms)) {
+  #   ## this is something that is like [[1]][[1]]$name
+  #   browser()
+  #   for(el in seq_along(x)) {
+  #     cli::cli_inform('{length(x)}: {el}')
+  #     # if(length(x) == 3 & el == 5) {
+  #     #   browser()
+  #     # }
+  #     x[[el]] <- prettify_nested_dfs(x[[el]])
+  #   }
+  # }
+  
+  if (isTRUE(is_df) & isTRUE(has_nms)) {
+    x <- prettify_df(x)
+  }
+  
+  if (isTRUE(is_lst) & isFALSE(is_df) & isTRUE(has_nms)) {
+    names(x) <- janitor::make_clean_names(nms)
+  }
+
+  ## here if df or list
+  clss <- purrr::map(x, class)
+  clss_w_df <- clss |> purrr::keep(~any(.x == "data.frame"))
+  
+  if (length(clss_w_df) > 0) {
+    cols <- names(clss_w_df)
+    for(col in cols) {
+      x[[col]] <- prettify_nested_dfs(x[[col]])
     }
-    
-    clss_w_lst <- clss |> purrr::keep(~any(.x == "list"))
-    
-    if (length(clss_w_lst) > 0) {
-      cols <- names(clss_w_lst)
-      for(col in cols) {
-        x[[col]] <- list(prettify_nested_dfs(x[[col]]))
-      }
+  }
+  
+  clss_w_lst <- clss |> purrr::keep(~any(.x == "list"))
+  
+  if (length(clss_w_lst) > 0) {
+    cols <- names(clss_w_lst)
+    for(col in cols) {
+      x[[col]] <- prettify_nested_dfs(x[[col]])
     }
   }
   x
@@ -70,7 +85,7 @@ get_ribgg_data <- function(...) {
   
   resp |> 
     purrr::pluck("data") |> 
-    prettify_df()
+    prettify_nested_dfs()
 }
 
 get_nested_ribgg_data <- function(...) {
@@ -200,7 +215,7 @@ get_matches <- function(series_id) {
 #' match_details <- get_match_details(79018) ## Optic vs. Liquid, Map 3
 #' match_details |> purrr::pluck("locations")
 #' }
- <- function(match_id) {
+get_match_details <- function(match_id) {
   sprintf("matches/%s/details", match_id) |>
     get_nested_ribgg_data()
 }

@@ -10,7 +10,7 @@ get_match_details(match_id)
 \item{match_id}{Match ID}
 }
 \value{
-a list with the following elements
+a list where each element represents a map. In each element is another list with the following elements: id, events, locations, economies.
 }
 \description{
 Get match details for a given series

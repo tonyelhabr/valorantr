@@ -10,7 +10,7 @@ get_matches(series_id)
 \item{series_id}{Series ID}
 }
 \value{
-a list with the following elements
+a list with the following elements: id, event_id, team1id, team2id, start_date, best_of, stage, bracket, completed, live, win_condition, vlr_id, vod_url, ggbet_id, pmt_status, pmt_reddit_url, pmt_json, event_name, event_slug, event_logo_url, parent_event_id, parent_event_name, parent_event_slug, team1, team2, matches, stats, player_stats.
 }
 \description{
 Get match ids for a given series
@@ -19,5 +19,6 @@ Get match ids for a given series
 \donttest{
 matches <- get_matches(35225) ## Optic vs. Liquid
 matches |> purrr::pluck("matches")
+matches$matches$id ## [1] 79016 79017 79018
 }
 }
