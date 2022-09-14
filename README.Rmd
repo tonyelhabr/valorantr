@@ -1,0 +1,36 @@
+---
+output: github_document
+execute:
+  eval: false
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# valorantr
+
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/tonyelhabr/valorantr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tonyelhabr/valorantr/actions/workflows/R-CMD-check.yaml)
+
+<!-- badges: end -->
+
+`{valorantr}` wraps the hidden API of rib.gg, a site for professional Valorant match data.
+
+## Installation
+
+You can install the development version of `{valorantr}` with:
+
+```{r}
+remotes::install_github("tonyelhabr/valorantr")
+```
