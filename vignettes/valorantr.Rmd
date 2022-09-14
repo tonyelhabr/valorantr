@@ -1,0 +1,105 @@
+---
+title: "Introduction to valorantr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{valorantr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+#| label: setup-knitr
+#| include: FALSE
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  echo = FALSE,
+  include = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>"
+)
+```
+
+```{r}
+#| label: setup
+library(valorantr)
+# library(janitor)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(stringr)
+```
+
+```{r}
+#| label: get_events
+vct_champs_events <- get_events(
+  'VALORANT Champions 2022'
+)
+
+vct_champs_playoffs_events <- vct_champs_events |> 
+  filter(name == 'VALORANT Champions 2022 - Playoffs')
+
+dplyr::glimpse(vct_champs_playoffs_events)
+```
+
+```{r}
+#| label: get_series
+vct_champs_playoffs_series <- get_series(vct_champs_playoffs_events$id) |> 
+  unnest_wider(c(team1, team2), names_sep = '_') |> 
+  clean_names()
+glimpse(vct_champs_playoffs_series)
+```
+
+```{r}
+#| label: get_series
+optic_liquid_series <- vct_champs_playoffs_series |> 
+  filter(team1_short_name == 'OPTC', team2_short_name == 'TL')
+glimpse(optic_liquid_series)
+```
+
+```{r}
+#| label: get_matches
+optic_liquid_matches <- get_matches(optic_liquid_series$id)
+glimpse(optic_liquid_matches)
+```
+
+```{r}
+#| label: get_player
+optic_liquid_players <- optic_liquid_matches$player_stats |> 
+  distinct(player_id) |> 
+  mutate(
+    data = map(player_id, get_player)
+  )
+
+optic_liquid_player_names <- optic_liquid_players |> 
+  tidyr::hoist(
+    data,
+    "ign",
+    "first_name",
+    "last_name",
+    "team_id" = list("team", "id"),
+    "team_short_name" = list("team", "short_name")
+  ) |>
+  select(-data) |>
+  mutate(
+    across(c(first_name, last_name), stringr::str_squish)
+  )
+glimpse(optic_liquid_player_names)
+```
+
+```{r}
+#| label: get_match_details
+optic_liquid_match_details <- optic_liquid_matches$matches$id |> 
+  set_names() |> 
+  map(get_match_details)
+str(optic_liquid_match_details, max.level = 2)
+```
+
+```{r}
+#| label: get_match_locations
+optic_liquid_match_details_m3 <- optic_liquid_match_details |> pluck(3)
+
+optic_liquid_match_details_m3 |> 
+  pluck('locations') |> 
+  glimpse()
+```
