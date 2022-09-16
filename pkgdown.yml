@@ -3,7 +3,7 @@ pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   valorantr: valorantr.html
-last_built: 2022-09-16T11:50Z
+last_built: 2022-09-16T12:53Z
 urls:
   reference: https://tonyelhabr.github.io/valorantr/reference
   article: https://tonyelhabr.github.io/valorantr/articles

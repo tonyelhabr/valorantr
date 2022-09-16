@@ -67,12 +67,26 @@
 
     
     
-<p><a href="https://tonyelhabr.github.io/valorantr/">valorantr</a> makes it easy to retrieve data from rib.gg’s API.</p>
+<p><a href="https://tonyelhabr.github.io/valorantr/">valorantr</a> makes it easy to retrieve data from rib.gg”s API.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tonyelhabr.github.io/valorantr/">valorantr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor" class="external-link">janitor</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="events">Events<a class="anchor" aria-label="anchor" href="#events"></a>
 </h2>
-<p>We can retrieve tournaments (events) with a query string passed to <code>get_events</code>. If you’re query string doesn’t match something that the API recognized, a default set of results will be returned (determined by the API).</p>
-<pre><code><span><span class="co">#&gt; Rows: 1</span></span>
+<p>We can retrieve tournaments (events) with a query string passed to <code>get_events</code>. If you”re query string doesn”t match something that the API recognized, a default set of results will be returned (determined by the API).</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">vct_champs_events</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_events.html">get_events</a></span><span class="op">(</span><span class="st">"VALORANT Champions 2022"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">vct_champs_playoffs_events</span> <span class="op">&lt;-</span> <span class="va">vct_champs_events</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op">==</span> <span class="st">"VALORANT Champions 2022 - Playoffs"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vct_champs_playoffs_events</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 1</span></span>
 <span><span class="co">#&gt; Columns: 29</span></span>
 <span><span class="co">#&gt; $ id                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1866</span></span>
 <span><span class="co">#&gt; $ name              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "VALORANT Champions 2022 - Playoffs"</span></span>
@@ -102,13 +116,18 @@
 <span><span class="co">#&gt; $ importance        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0</span></span>
 <span><span class="co">#&gt; $ type              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "bracket"</span></span>
 <span><span class="co">#&gt; $ region            <span style="color: #949494; font-style: italic;">&lt;df[,4]&gt;</span> &lt;data.frame[1 x 4]&gt;</span></span>
-<span><span class="co">#&gt; $ country           <span style="color: #949494; font-style: italic;">&lt;df[,6]&gt;</span> &lt;data.frame[1 x 6]&gt;</span></span></code></pre>
+<span><span class="co">#&gt; $ country           <span style="color: #949494; font-style: italic;">&lt;df[,6]&gt;</span> &lt;data.frame[1 x 6]&gt;</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="series">Series<a class="anchor" aria-label="anchor" href="#series"></a>
 </h2>
 <p>We can retrieve all of the series played at an event with <code>get_series</code>.</p>
-<pre><code><span><span class="co">#&gt; Rows: 10</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">vct_champs_playoffs_series</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_series.html">get_series</a></span><span class="op">(</span><span class="va">vct_champs_playoffs_events</span><span class="op">$</span><span class="va">id</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">team1</span>, <span class="va">team2</span><span class="op">)</span>, names_sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html" class="external-link">clean_names</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vct_champs_playoffs_series</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 10</span></span>
 <span><span class="co">#&gt; Columns: 58</span></span>
 <span><span class="co">#&gt; $ id                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 35332, 35309, 35252, 35246, 35253, 35247, 35226, …</span></span>
 <span><span class="co">#&gt; $ event_id             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1866, 1866, 1866, 1866, 1866, 1866, 1866, 1866, 1…</span></span>
@@ -167,9 +186,13 @@
 <span><span class="co">#&gt; $ team2_rank           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 7, 6, 4, 7, 9, 7, 8, 1, 4</span></span>
 <span><span class="co">#&gt; $ team2_region_rank    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 2, 1, 2, 2, 2, 3, 1, 1</span></span>
 <span><span class="co">#&gt; $ team2_aliases        <span style="color: #949494; font-style: italic;">&lt;list&lt;list&gt;&gt;</span> [&lt;"FPX", "FunPlus"&gt;], [&lt;"FNC", "FNA"&gt;], ["…</span></span>
-<span><span class="co">#&gt; $ matches              <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[3 x 28]&gt;], [&lt;data.frame[3 x 28]&gt;], […</span></span></code></pre>
+<span><span class="co">#&gt; $ matches              <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[3 x 28]&gt;], [&lt;data.frame[3 x 28]&gt;], […</span></span></code></pre></div>
 <p>We can filter for a specific series from the set of series.</p>
-<pre><code><span><span class="co">#&gt; Rows: 1</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">optic_liquid_series</span> <span class="op">&lt;-</span> <span class="va">vct_champs_playoffs_series</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">team1_short_name</span> <span class="op">==</span> <span class="st">"OPTC"</span>, <span class="va">team2_short_name</span> <span class="op">==</span> <span class="st">"TL"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">optic_liquid_series</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 1</span></span>
 <span><span class="co">#&gt; Columns: 58</span></span>
 <span><span class="co">#&gt; $ id                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 35225</span></span>
 <span><span class="co">#&gt; $ event_id             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1866</span></span>
@@ -228,13 +251,17 @@
 <span><span class="co">#&gt; $ team2_rank           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 8</span></span>
 <span><span class="co">#&gt; $ team2_region_rank    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 3</span></span>
 <span><span class="co">#&gt; $ team2_aliases        <span style="color: #949494; font-style: italic;">&lt;list&lt;list&gt;&gt;</span> [&lt;"TL", "LIQUID"&gt;]</span></span>
-<span><span class="co">#&gt; $ matches              <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[3 x 28]&gt;]</span></span></code></pre>
+<span><span class="co">#&gt; $ matches              <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[3 x 28]&gt;]</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="matches">Matches<a class="anchor" aria-label="anchor" href="#matches"></a>
 </h2>
 <p>We can retrieve all of the “maps” played in a series (most are best of three).</p>
-<pre><code><span><span class="co">#&gt; List of 28</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">optic_liquid_matches</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_matches.html">get_matches</a></span><span class="op">(</span><span class="va">optic_liquid_series</span><span class="op">$</span><span class="va">id</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">optic_liquid_matches</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/janitor/man/make_clean_names.html" class="external-link">make_clean_names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">optic_liquid_matches</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">optic_liquid_matches</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; List of 28</span></span>
 <span><span class="co">#&gt;  $ id               : int 35225</span></span>
 <span><span class="co">#&gt;  $ event_id         : int 1866</span></span>
 <span><span class="co">#&gt;  $ team1id          : int 6426</span></span>
@@ -262,22 +289,47 @@
 <span><span class="co">#&gt;  $ team2            :List of 17</span></span>
 <span><span class="co">#&gt;  $ matches          :'data.frame':   3 obs. of  27 variables:</span></span>
 <span><span class="co">#&gt;  $ stats            :List of 3</span></span>
-<span><span class="co">#&gt;  $ player_stats     :'data.frame':   620 obs. of  23 variables:</span></span></code></pre>
+<span><span class="co">#&gt;  $ player_stats     :'data.frame':   620 obs. of  23 variables:</span></span></code></pre></div>
 <p>We can retrieve players involved in the series with <code>get_player</code>.</p>
-<pre><code><span><span class="co">#&gt; Rows: 10</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">optic_liquid_players</span> <span class="op">&lt;-</span> <span class="va">optic_liquid_matches</span><span class="op">$</span><span class="va">player_stats</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span>player_id <span class="op">=</span> <span class="va">playerId</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">player_id</span>, <span class="va">get_player</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">optic_liquid_player_names</span> <span class="op">&lt;-</span> <span class="va">optic_liquid_players</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html" class="external-link">hoist</a></span><span class="op">(</span></span>
+<span>    <span class="va">data</span>,</span>
+<span>    <span class="st">"ign"</span>,</span>
+<span>    <span class="st">"first_name"</span> <span class="op">=</span> <span class="st">"firstName"</span>,</span>
+<span>    <span class="st">"last_name"</span> <span class="op">=</span> <span class="st">"lastName"</span>,</span>
+<span>    <span class="st">"team_id"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"team"</span>, <span class="st">"id"</span><span class="op">)</span>,</span>
+<span>    <span class="st">"team_short_name"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"team"</span>, <span class="st">"shortName"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">data</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">first_name</span>, <span class="va">last_name</span><span class="op">)</span>, <span class="va">str_squish</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">optic_liquid_player_names</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 10</span></span>
 <span><span class="co">#&gt; Columns: 6</span></span>
 <span><span class="co">#&gt; $ player_id       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 398, 750, 1690, 2056, 2483, 2716, 2841, 3211, 10211, 1…</span></span>
 <span><span class="co">#&gt; $ ign             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Marved", "dimasick", "ScreaM", "soulcas", "crashies",…</span></span>
 <span><span class="co">#&gt; $ first_name      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Jimmy", "Dmitriy", "Adil", "Dom", "Austin", "Jaccob",…</span></span>
 <span><span class="co">#&gt; $ last_name       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Nguyen", "Matvienko", "Benrlitom", "Sulcas", "Roberts…</span></span>
 <span><span class="co">#&gt; $ team_id         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6426, 224, 224, 224, 6426, 6426, 6426, 6426, 224, 224</span></span>
-<span><span class="co">#&gt; $ team_short_name <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OPTC", "TL", "TL", "TL", "OPTC", "OPTC", "OPTC", "OPT…</span></span></code></pre>
+<span><span class="co">#&gt; $ team_short_name <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OPTC", "TL", "TL", "TL", "OPTC", "OPTC", "OPTC", "OPT…</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="match-details">Match details<a class="anchor" aria-label="anchor" href="#match-details"></a>
 </h2>
 <p>We can retrieve details of a match (best-of-25 rounds).</p>
-<pre><code><span><span class="co">#&gt; List of 3</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">optic_liquid_match_details</span> <span class="op">&lt;-</span> <span class="va">optic_liquid_matches</span><span class="op">$</span><span class="va">matches</span><span class="op">$</span><span class="va">id</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">get_match_details</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">optic_liquid_match_details</span>, max.level <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; List of 3</span></span>
 <span><span class="co">#&gt;  $ :List of 4</span></span>
 <span><span class="co">#&gt;   ..$ id       : int 79016</span></span>
 <span><span class="co">#&gt;   ..$ events   :'data.frame':    181 obs. of  19 variables:</span></span>
@@ -292,16 +344,19 @@
 <span><span class="co">#&gt;   ..$ id       : int 79018</span></span>
 <span><span class="co">#&gt;   ..$ events   :'data.frame':    174 obs. of  19 variables:</span></span>
 <span><span class="co">#&gt;   ..$ locations:'data.frame':    1071 obs. of  6 variables:</span></span>
-<span><span class="co">#&gt;   ..$ economies:'data.frame':    210 obs. of  10 variables:</span></span></code></pre>
+<span><span class="co">#&gt;   ..$ economies:'data.frame':    210 obs. of  10 variables:</span></span></code></pre></div>
 <p>One of the interesting results is x-y coordinates of players.</p>
-<pre><code><span><span class="co">#&gt; Rows: 1,071</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">optic_liquid_match_details_m3</span> <span class="op">&lt;-</span> <span class="va">optic_liquid_match_details</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">optic_liquid_match_details_m3</span><span class="op">$</span><span class="va">locations</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 1,071</span></span>
 <span><span class="co">#&gt; Columns: 6</span></span>
 <span><span class="co">#&gt; $ roundNumber     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</span></span>
 <span><span class="co">#&gt; $ playerId        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 398, 750, 1690, 2056, 2483, 2716, 2841, 3211, 10211, 1…</span></span>
 <span><span class="co">#&gt; $ roundTimeMillis <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 40570, 40570, 40570, 40570, 40570, 40570, 40570, 40570…</span></span>
 <span><span class="co">#&gt; $ locationX       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 253.7364, 676.5586, 673.2531, 337.9559, 317.5478, 284.…</span></span>
 <span><span class="co">#&gt; $ locationY       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 519.6171, 393.4316, 421.9599, 369.7179, 387.5391, 422.…</span></span>
-<span><span class="co">#&gt; $ viewRadians     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6.636822, 1.779514, 2.991358, NA, 7.822813, 6.891820, …</span></span></code></pre>
+<span><span class="co">#&gt; $ viewRadians     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6.636822, 1.779514, 2.991358, NA, 7.822813, 6.891820, …</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
