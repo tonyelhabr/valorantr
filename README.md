@@ -9,8 +9,8 @@
 
 <!-- badges: end -->
 
-`{valorantr}` wraps the hidden API of rib.gg, a site for professional
-Valorant match data.
+`{valorantr}` wraps the API of rib.gg, a site for professional Valorant
+match data and analytics.
 
 ## Installation
 

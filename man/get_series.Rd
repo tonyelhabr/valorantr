@@ -16,7 +16,7 @@ get_series(event_id, ..., completed = TRUE, n_results = 50)
 \item{n_results}{Number of results to return. 50 is default of the API.}
 }
 \value{
-a tibble
+a data.frame
 }
 \description{
 Get series ids for a given event

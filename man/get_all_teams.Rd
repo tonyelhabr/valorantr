@@ -7,7 +7,7 @@
 get_all_teams()
 }
 \value{
-a tibble
+a data.frame
 }
 \description{
 Get all teams' info

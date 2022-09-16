@@ -18,6 +18,6 @@ Get match details for a given series
 \examples{
 \donttest{
 match_details <- get_match_details(79018) ## Optic vs. Liquid, Map 3
-match_details |> purrr::pluck("locations")
+match_details$locations
 }
 }

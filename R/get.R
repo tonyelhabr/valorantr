@@ -1,10 +1,6 @@
 
 #' @importFrom httr GET content
 #' @importFrom jsonlite fromJSON
-#' @importFrom purrr pluck
-#' @importFrom tibble as_tibble
-#' @importFrom janitor clean_names make_clean_names
-#' @importFrom cli cli_inform
 #' @importFrom utils URLencode
 
 get_ribgg <- function(x, ...) {
@@ -14,90 +10,22 @@ get_ribgg <- function(x, ...) {
     jsonlite::fromJSON()
 }
 
-prettify_df <- function(df) {
-  df |> 
-    tibble::as_tibble() |> 
-    janitor::clean_names()
-}
-
-prettify_nested_dfs <- function(x) {
-  expected_x <- list("ZETA", "OpTic", NULL)
-  if (identical(x, expected_x)) {
-    browser()
-  }
-  is_df <- is.data.frame(x)
-  is_lst <- is.list(x)
-  
-  if (isFALSE(is_df) & isFALSE(is_lst)) {
-    return(x)
-  }
-  
-  nms <- names(x)
-  has_nms <- !is.null(nms) & length(nms) > 0
-  # if (isTRUE(is_lst) & isFALSE(has_nms)) {
-  #   ## this is something that is like [[1]][[1]]$name
-  #   browser()
-  #   for(el in seq_along(x)) {
-  #     cli::cli_inform('{length(x)}: {el}')
-  #     # if(length(x) == 3 & el == 5) {
-  #     #   browser()
-  #     # }
-  #     x[[el]] <- prettify_nested_dfs(x[[el]])
-  #   }
-  # }
-  
-  if (isTRUE(is_df) & isTRUE(has_nms)) {
-    x <- prettify_df(x)
-  }
-  
-  if (isTRUE(is_lst) & isFALSE(is_df) & isTRUE(has_nms)) {
-    names(x) <- janitor::make_clean_names(nms)
-  }
-
-  ## here if df or list
-  clss <- purrr::map(x, class)
-  clss_w_df <- clss |> purrr::keep(~any(.x == "data.frame"))
-  
-  if (length(clss_w_df) > 0) {
-    cols <- names(clss_w_df)
-    for(col in cols) {
-      x[[col]] <- prettify_nested_dfs(x[[col]])
-    }
-  }
-  
-  clss_w_lst <- clss |> purrr::keep(~any(.x == "list"))
-  
-  if (length(clss_w_lst) > 0) {
-    cols <- names(clss_w_lst)
-    for(col in cols) {
-      x[[col]] <- prettify_nested_dfs(x[[col]])
-    }
-  }
-  x
-}
-
 get_ribgg_data <- function(...) {
   resp <- get_ribgg(...)
   
   if (isTRUE(getOption("valorantr.verbose"))) {
-    cli::cli_inform('Total of {resp$meta$total} possible results.')
+    message(sprintf('Total of %s possible results.', resp$meta$total))
   }
   
-  resp |> 
-    purrr::pluck("data") |> 
-    prettify_nested_dfs()
+  resp[["data"]]
 }
 
-get_nested_ribgg_data <- function(...) {
-  get_ribgg(...) |> 
-    prettify_nested_dfs()
-}
 
 #' Get all teams
 #' 
 #' Get all teams' info
 #' 
-#' @return a tibble
+#' @return a data.frame
 #' @export
 #' @examples 
 #' \donttest{
@@ -105,8 +33,7 @@ get_nested_ribgg_data <- function(...) {
 #' dplyr::glimpse(all_teams)
 #' }
 get_all_teams <- function() {
-  get_ribgg("teams/all") |> 
-    prettify_df()
+  get_ribgg("teams/all")
 }
 
 #' Get player
@@ -123,7 +50,7 @@ get_all_teams <- function() {
 #' }
 get_player <- function(player_id) {
   sprintf("players/%s", player_id) |> 
-    get_nested_ribgg_data()
+    get_ribgg()
 }
 
 #' Get events
@@ -137,7 +64,7 @@ get_player <- function(player_id) {
 #' @param n_results Number of results to return. API tries to respect `n_results` even if event name doesn't match query. 50 is default of the API.
 #' @param sort_by,ascending How to return the results
 #' @param has_series Whether or not to return events with completed series
-#' @return a tibble
+#' @return a data.frame
 #' @export
 #' @examples 
 #' \donttest{
@@ -168,7 +95,7 @@ get_events <- function(query, ..., sort_by = "startDate", ascending = FALSE, has
 #' @param \dots Currently un-used
 #' @param completed Whether or not to return completed series
 #' @param n_results Number of results to return. 50 is default of the API.
-#' @return a tibble
+#' @return a data.frame
 #' @export
 #' @examples 
 #' \donttest{
@@ -195,12 +122,11 @@ get_series <- function(event_id, ..., completed = TRUE, n_results = 50) {
 #' @examples 
 #' \donttest{
 #' matches <- get_matches(35225) ## Optic vs. Liquid
-#' matches |> purrr::pluck("matches")
-#' matches$matches$id ## [1] 79016 79017 79018
+#' matches$matches
 #' }
 get_matches <- function(series_id) {
   sprintf("series/%s", series_id) |> 
-    get_nested_ribgg_data()
+    get_ribgg()
 }
 
 #' Get match details
@@ -213,9 +139,9 @@ get_matches <- function(series_id) {
 #' @examples 
 #' \donttest{
 #' match_details <- get_match_details(79018) ## Optic vs. Liquid, Map 3
-#' match_details |> purrr::pluck("locations")
+#' match_details$locations
 #' }
 get_match_details <- function(match_id) {
   sprintf("matches/%s/details", match_id) |>
-    get_nested_ribgg_data()
+    get_ribgg()
 }

@@ -18,7 +18,6 @@ Get match ids for a given series
 \examples{
 \donttest{
 matches <- get_matches(35225) ## Optic vs. Liquid
-matches |> purrr::pluck("matches")
-matches$matches$id ## [1] 79016 79017 79018
+matches$matches
 }
 }

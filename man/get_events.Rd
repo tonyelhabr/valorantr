@@ -25,7 +25,7 @@ get_events(
 \item{n_results}{Number of results to return. API tries to respect \code{n_results} even if event name doesn't match query. 50 is default of the API.}
 }
 \value{
-a tibble
+a data.frame
 }
 \description{
 Get event ids given a free-text query

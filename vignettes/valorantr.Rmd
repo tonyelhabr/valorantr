@@ -1,5 +1,5 @@
 ---
-title: "Introduction to valorantr"
+title: "Introduction to {valorantr}"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{valorantr}
@@ -20,15 +20,21 @@ knitr::opts_chunk$set(
 )
 ```
 
+`{valorantr}` makes it easy to retrieve data from rib.gg's API.
+
 ```{r}
 #| label: setup
 library(valorantr)
-# library(janitor)
+library(janitor)
 library(dplyr)
 library(tidyr)
 library(purrr)
 library(stringr)
 ```
+
+## Events
+
+We can retrieve tournaments (events) with a query string passed to `get_events`. If you're query string doesn't match something that the API recognized, a default set of results will be returned (determined by the API).
 
 ```{r}
 #| label: get_events
@@ -36,9 +42,12 @@ vct_champs_events <- get_events('VALORANT Champions 2022')
 
 vct_champs_playoffs_events <- vct_champs_events |> 
   filter(name == 'VALORANT Champions 2022 - Playoffs')
-
-dplyr::glimpse(vct_champs_playoffs_events)
+glimpse(vct_champs_playoffs_events)
 ```
+
+## Series
+
+We can retrieve all of the series played at an event with `get_series`.
 
 ```{r}
 #| label: get_series
@@ -48,6 +57,8 @@ vct_champs_playoffs_series <- get_series(vct_champs_playoffs_events$id) |>
 glimpse(vct_champs_playoffs_series)
 ```
 
+We can filter for a specific series from the set of series.
+
 ```{r}
 #| label: get_series
 optic_liquid_series <- vct_champs_playoffs_series |> 
@@ -55,16 +66,23 @@ optic_liquid_series <- vct_champs_playoffs_series |>
 glimpse(optic_liquid_series)
 ```
 
+## Matches
+
+We can retrieve all of the "maps" played in a series (most are best of three).
+
 ```{r}
 #| label: get_matches
 optic_liquid_matches <- get_matches(optic_liquid_series$id)
-glimpse(optic_liquid_matches)
+names(optic_liquid_matches) <- make_clean_names(names(optic_liquid_matches))
+str(optic_liquid_matches, max.level = 1)
 ```
+
+We can retrieve players involved in the series with `get_player`.
 
 ```{r}
 #| label: get_player
 optic_liquid_players <- optic_liquid_matches$player_stats |> 
-  distinct(player_id) |> 
+  distinct(player_id = playerId) |> 
   mutate(
     data = map(player_id, get_player)
   )
@@ -73,10 +91,10 @@ optic_liquid_player_names <- optic_liquid_players |>
   tidyr::hoist(
     data,
     "ign",
-    "first_name",
-    "last_name",
+    "first_name" = "firstName",
+    "last_name" = "lastName",
     "team_id" = list("team", "id"),
-    "team_short_name" = list("team", "short_name")
+    "team_short_name" = list("team", "shortName")
   ) |>
   select(-data) |>
   mutate(
@@ -84,6 +102,10 @@ optic_liquid_player_names <- optic_liquid_players |>
   )
 glimpse(optic_liquid_player_names)
 ```
+
+## Match details
+
+We can retrieve details of a match (best-of-25 rounds).
 
 ```{r}
 #| label: get_match_details
@@ -93,11 +115,10 @@ optic_liquid_match_details <- optic_liquid_matches$matches$id |>
 str(optic_liquid_match_details, max.level = 2)
 ```
 
+One of the interesting results is x-y coordinates of players.
+
 ```{r}
 #| label: get_match_locations
-optic_liquid_match_details_m3 <- optic_liquid_match_details |> pluck(3)
-
-optic_liquid_match_details_m3 |> 
-  pluck('locations') |> 
-  glimpse()
+optic_liquid_match_details_m3 <- optic_liquid_match_details$`79018`
+glimpse(optic_liquid_match_details_m3$locations)
 ```

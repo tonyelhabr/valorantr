@@ -11,17 +11,16 @@ License: MIT + file LICENSE
 Depends: 
     R (>= 4.2.0)
 Imports: 
-    cli (>= 3.0.0),
     httr,
-    janitor,
-    jsonlite,
-    purrr,
-    tibble
+    jsonlite
 Suggests: 
     knitr,
     rmarkdown,
     roxygen2,
     dplyr,
+    purrr,
+    tibble,
+    janitor,
     testthat (>= 3.0.0)
 Encoding: UTF-8
 LazyData: true
