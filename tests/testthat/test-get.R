@@ -1,5 +1,5 @@
 test_that("get_events works", {
-  skip_on_ci()
+  # skip_on_ci()
   skip_on_cran()
   
   n_results <- 3L
@@ -39,12 +39,12 @@ test_that("get_events works", {
       "type",
       "region",
       "country"
-      )
+    )
   )
 })
 
 test_that("get_series works", {
-  skip_on_ci()
+  # skip_on_ci()
   skip_on_cran()
   
   n_results <- 3L
@@ -88,7 +88,7 @@ test_that("get_series works", {
 })
 
 test_that("get_matches works", {
-  skip_on_ci()
+  # skip_on_ci()
   skip_on_cran()
   
   series_id <- 35225L
@@ -96,7 +96,7 @@ test_that("get_matches works", {
   
   expect_identical(matches$id, series_id)
   expect_identical(nrow(matches$matches), 3L)
-
+  
   expect_identical(
     names(matches),
     c("id",
@@ -131,9 +131,8 @@ test_that("get_matches works", {
   )
 })
 
-
 test_that("get_matches works", {
-  skip_on_ci()
+  # skip_on_ci()
   skip_on_cran()
   
   match_id <- 79018L
@@ -151,4 +150,47 @@ test_that("get_matches works", {
   )
 })
 
+test_that("get_all_teams works", {
+  # skip_on_ci()
+  skip_on_cran()
+  
+  all_teams <- get_all_teams()
+  expect_true(is.data.frame(all_teams))
+  expect_gt(nrow(all_teams), 0L)
+  expect_identical(
+    colnames(all_teams),
+    c("id", "name", "shortName", "countryId")
+  )
+})
 
+test_that("get_player works", {
+  # skip_on_ci()
+  skip_on_cran()
+  
+  player_id <- 2716L
+  player <- get_player(player_id)
+  expect_identical(player$id, player_id)
+  expect_identical(
+    names(player),
+    c(
+      "id",
+      "ign",
+      "firstName",
+      "lastName",
+      "bio",
+      "countryId",
+      "instagramUrl",
+      "liquipediaUrl",
+      "twitchUrl",
+      "twitterUrl",
+      "youtubeUrl",
+      "imageUrl",
+      "firestoreId",
+      "previousRiotPlayerIds",
+      "startDate",
+      "role",
+      "team",
+      "news"
+    )
+  )
+})

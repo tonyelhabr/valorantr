@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-`{valorantr}` makes it easy to retrieve data from rib.gg"s API.
+`{valorantr}` makes it easy to retrieve data from [rib.gg](https://rib.gg)'s API.
 
 ```{r}
 #| label: setup
