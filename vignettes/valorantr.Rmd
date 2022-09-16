@@ -60,7 +60,7 @@ glimpse(vct_champs_playoffs_series)
 We can filter for a specific series from the set of series.
 
 ```{r}
-#| label: get_series
+#| label: filt-series
 optic_liquid_series <- vct_champs_playoffs_series |> 
   filter(team1_short_name == 'OPTC', team2_short_name == 'TL')
 glimpse(optic_liquid_series)
@@ -88,7 +88,7 @@ optic_liquid_players <- optic_liquid_matches$player_stats |>
   )
 
 optic_liquid_player_names <- optic_liquid_players |> 
-  tidyr::hoist(
+  hoist(
     data,
     "ign",
     "first_name" = "firstName",
@@ -98,7 +98,7 @@ optic_liquid_player_names <- optic_liquid_players |>
   ) |>
   select(-data) |>
   mutate(
-    across(c(first_name, last_name), stringr::str_squish)
+    across(c(first_name, last_name), str_squish)
   )
 glimpse(optic_liquid_player_names)
 ```

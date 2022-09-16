@@ -17,7 +17,7 @@ Get player info given a player ID
 }
 \examples{
 \donttest{
-yay <- get_player()
+yay <- get_player(2716)
 dplyr::glimpse(yay)
 }
 }

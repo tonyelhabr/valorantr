@@ -45,7 +45,7 @@ get_all_teams <- function() {
 #' @export
 #' @examples 
 #' \donttest{
-#' yay <- get_player()
+#' yay <- get_player(2716)
 #' dplyr::glimpse(yay)
 #' }
 get_player <- function(player_id) {
