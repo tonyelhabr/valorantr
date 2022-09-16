@@ -12,7 +12,7 @@ vignette: >
 #| include: FALSE
 knitr::opts_chunk$set(
   collapse = TRUE,
-  echo = FALSE,
+  echo = TRUE,
   include = TRUE,
   warning = FALSE,
   message = FALSE,
@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-`{valorantr}` makes it easy to retrieve data from rib.gg's API.
+`{valorantr}` makes it easy to retrieve data from rib.gg"s API.
 
 ```{r}
 #| label: setup
@@ -35,14 +35,14 @@ library(magrittr)
 
 ## Events
 
-We can retrieve tournaments (events) with a query string passed to `get_events`. If you're query string doesn't match something that the API recognized, a default set of results will be returned (determined by the API).
+We can retrieve tournaments (events) with a query string passed to `get_events`. If you"re query string doesn"t match something that the API recognized, a default set of results will be returned (determined by the API).
 
 ```{r}
 #| label: get_events
-vct_champs_events <- get_events('VALORANT Champions 2022')
+vct_champs_events <- get_events("VALORANT Champions 2022")
 
 vct_champs_playoffs_events <- vct_champs_events |> 
-  filter(name == 'VALORANT Champions 2022 - Playoffs')
+  filter(name == "VALORANT Champions 2022 - Playoffs")
 glimpse(vct_champs_playoffs_events)
 ```
 
@@ -52,8 +52,8 @@ We can retrieve all of the series played at an event with `get_series`.
 
 ```{r}
 #| label: get_series
-vct_champs_playoffs_series <- get_series(vct_champs_playoffs_events$id ) |> 
-  unnest_wider(c(team1, team2), names_sep = '_') |> 
+vct_champs_playoffs_series <- get_series(vct_champs_playoffs_events$id) |> 
+  unnest_wider(c(team1, team2), names_sep = "_") |> 
   clean_names()
 glimpse(vct_champs_playoffs_series)
 ```
@@ -63,7 +63,7 @@ We can filter for a specific series from the set of series.
 ```{r}
 #| label: filt-series
 optic_liquid_series <- vct_champs_playoffs_series |> 
-  filter(team1_short_name == 'OPTC', team2_short_name == 'TL')
+  filter(team1_short_name == "OPTC", team2_short_name == "TL")
 glimpse(optic_liquid_series)
 ```
 
