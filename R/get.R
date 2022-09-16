@@ -4,10 +4,10 @@
 #' @importFrom utils URLencode
 
 get_ribgg <- function(x, ...) {
-  sprintf("https://backend-prod.rib.gg/v1/%s", x) |> 
-    httr::GET(...) |> 
-    httr::content(as = "text") |> 
-    jsonlite::fromJSON()
+  url <- sprintf("https://backend-prod.rib.gg/v1/%s", x)
+  resp <- httr::GET(url, ...) 
+  content <- httr::content(resp, as = "text")
+  jsonlite::fromJSON(content)
 }
 
 get_ribgg_data <- function(...) {
@@ -49,8 +49,8 @@ get_all_teams <- function() {
 #' dplyr::glimpse(yay)
 #' }
 get_player <- function(player_id) {
-  sprintf("players/%s", player_id) |> 
-    get_ribgg()
+  url <- sprintf("players/%s", player_id) 
+  get_ribgg(url)
 }
 
 #' Get events
@@ -76,15 +76,15 @@ get_events <- function(query, ..., sort_by = "startDate", ascending = FALSE, has
     is.character(query),
     length(query) == 1
   )
-  sprintf(
+  url <- sprintf(
     "events?query=%s&sort=%s&sortAscending=%s&hasSeries=%s&take=%s", 
     URLencode(query),
     sort_by,
     tolower(ascending),
     tolower(has_series),
     n_results
-  ) |> 
-    get_ribgg_data()
+  ) 
+  get_ribgg_data(url)
 }
 
 #' Get series
@@ -103,13 +103,13 @@ get_events <- function(query, ..., sort_by = "startDate", ascending = FALSE, has
 #' }
 get_series <- function(event_id, ..., completed = TRUE, n_results = 50) {
   stopifnot(length(event_id) == 1)
-  sprintf(
+  url <- sprintf(
     "series?take=%s&eventIds[]=%s&completed=%s",
     n_results, 
     event_id,
     completed
-  ) |> 
-    get_ribgg_data()
+  )
+  get_ribgg_data(url)
 }
 
 #' Get matches
@@ -125,8 +125,8 @@ get_series <- function(event_id, ..., completed = TRUE, n_results = 50) {
 #' matches$matches
 #' }
 get_matches <- function(series_id) {
-  sprintf("series/%s", series_id) |> 
-    get_ribgg()
+  url <- sprintf("series/%s", series_id) 
+  get_ribgg(url)
 }
 
 #' Get match details
@@ -142,6 +142,6 @@ get_matches <- function(series_id) {
 #' match_details$locations
 #' }
 get_match_details <- function(match_id) {
-  sprintf("matches/%s/details", match_id) |>
-    get_ribgg()
+  url <- sprintf("matches/%s/details", match_id)
+  get_ribgg(url)
 }

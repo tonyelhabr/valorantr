@@ -30,6 +30,7 @@ library(dplyr)
 library(tidyr)
 library(purrr)
 library(stringr)
+library(magrittr)
 ```
 
 ## Events
@@ -51,7 +52,7 @@ We can retrieve all of the series played at an event with `get_series`.
 
 ```{r}
 #| label: get_series
-vct_champs_playoffs_series <- get_series(vct_champs_playoffs_events$id) |> 
+vct_champs_playoffs_series <- get_series(vct_champs_playoffs_events$id ) |> 
   unnest_wider(c(team1, team2), names_sep = '_') |> 
   clean_names()
 glimpse(vct_champs_playoffs_series)
@@ -95,7 +96,7 @@ optic_liquid_player_names <- optic_liquid_players |>
     "last_name" = "lastName",
     "team_id" = list("team", "id"),
     "team_short_name" = list("team", "shortName")
-  ) |>
+  )|>
   select(-data) |>
   mutate(
     across(c(first_name, last_name), str_squish)
@@ -110,7 +111,6 @@ We can retrieve details of a match (best-of-25 rounds).
 ```{r}
 #| label: get_match_details
 optic_liquid_match_details <- optic_liquid_matches$matches$id |> 
-  set_names() |> 
   map(get_match_details)
 str(optic_liquid_match_details, max.level = 2)
 ```
@@ -119,6 +119,6 @@ One of the interesting results is x-y coordinates of players.
 
 ```{r}
 #| label: get_match_locations
-optic_liquid_match_details_m3 <- optic_liquid_match_details$`79018`
+optic_liquid_match_details_m3 <- optic_liquid_match_details[[3]]
 glimpse(optic_liquid_match_details_m3$locations)
 ```

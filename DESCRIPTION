@@ -9,7 +9,7 @@ Authors@R:
 Description: An R package for pro Valorant data from rib.gg.
 License: MIT + file LICENSE
 Depends: 
-    R (>= 4.2.0)
+    R (>= 4.1.0)
 Imports: 
     httr,
     jsonlite
@@ -23,6 +23,7 @@ Suggests:
     janitor,
     tidyr,
     stringr,
+    magrittr,
     testthat (>= 3.0.0)
 Encoding: UTF-8
 LazyData: true
