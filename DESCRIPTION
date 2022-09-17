@@ -23,7 +23,6 @@ Suggests:
     janitor,
     tidyr,
     stringr,
-    magrittr,
     testthat (>= 3.0.0)
 Encoding: UTF-8
 LazyData: true
