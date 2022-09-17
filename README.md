@@ -1,6 +1,3 @@
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # valorantr
 
 <!-- badges: start -->
@@ -9,8 +6,7 @@
 
 <!-- badges: end -->
 
-`{valorantr}` wraps the API of [rib.gg](https://rib.gg), a site for
-professional Valorant match data and analytics.
+`{valorantr}` wraps the API of [rib.gg](https://rib.gg), a site for professional Valorant match data and analytics.
 
 ## Installation
 
