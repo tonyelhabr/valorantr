@@ -29,12 +29,11 @@ library(janitor)
 library(dplyr)
 library(tidyr)
 library(purrr)
-library(stringr)
 ```
 
 ## Events
 
-We can retrieve tournaments (events) with a query string passed to `get_events`. If you"re query string doesn"t match something that the API recognized, a default set of results will be returned (determined by the API).
+We can retrieve tournaments (events) with a query string passed to `get_events`. If you're query string doesn't match something that the API recognized, a default set of results will be returned (determined by the API).
 
 ```{r}
 #| label: get_events
@@ -44,6 +43,16 @@ vct_champs_playoffs_events <- vct_champs_events |>
   filter(name == "VALORANT Champions 2022 - Playoffs")
 glimpse(vct_champs_playoffs_events)
 ```
+
+You may not even need to query for an event yourself. You can load pre-saved events saved in the `events` release in `valorant-data` with `load_valorant("events)`.
+
+```{r}
+#| label: presaved_events
+presaved_events <- load_valorant("events")
+glimpse(presaved_events)
+```
+
+See all of the releases that can be read with `load_valorant()` [here] (<https://github.com/tonyelhabr/valorant-data/blob/master/README.md>).
 
 ## Series
 
@@ -64,6 +73,14 @@ We can filter for a specific series from the set of series.
 optic_liquid_series <- vct_champs_playoffs_series |> 
   filter(team1_short_name == "OPTC", team2_short_name == "TL")
 glimpse(optic_liquid_series)
+```
+
+We can load pre-saved series without `get_series()`.
+
+```{r}
+#| label: presaved_series
+presaved_series <- load_valorant("series")
+glimpse(presaved_series)
 ```
 
 ## Matches
@@ -96,11 +113,17 @@ optic_liquid_player_names <- optic_liquid_players |>
     "team_id" = list("team", "id"),
     "team_short_name" = list("team", "shortName")
   )|>
-  select(-data) |>
-  mutate(
-    across(c(first_name, last_name), str_squish)
-  )
+  select(-data)
 glimpse(optic_liquid_player_names)
+```
+
+We can load pre-saved matches without `get_matches()`.
+
+```{r}
+#| label: presaved_matches
+presaved_matches <- load_valorant("matches")
+length(presaved_matches)
+str(presaved_matches[[1]], max.level = 1)
 ```
 
 ## Match details
@@ -120,4 +143,13 @@ One of the interesting results is x-y coordinates of players.
 #| label: get_match_locations
 optic_liquid_match_details_m3 <- optic_liquid_match_details[[3]]
 glimpse(optic_liquid_match_details_m3$locations)
+```
+
+We can load pre-saved matches without `get_match_details()`.
+
+```{r}
+#| label: presaved_match_details
+presaved_match_details <- load_valorant("match_details")
+length(presaved_match_details)
+str(presaved_match_details[[1]], max.level = 2)
 ```
