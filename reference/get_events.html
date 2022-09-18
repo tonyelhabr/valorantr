@@ -46,7 +46,7 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_events</span><span class="op">(</span></span>
-<span>  <span class="va">query</span>,</span>
+<span>  query <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">...</span>,</span>
 <span>  sort_by <span class="op">=</span> <span class="st">"startDate"</span>,</span>
 <span>  ascending <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -92,39 +92,39 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu">get_events</span><span class="op">(</span><span class="st">"VALORANT Champions 2022"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Total of 31 possible results.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Total of 19 possible results.</span>
 <span class="r-in"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">events</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 19</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ id                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1866, 1865, 1858, 1709, 1694, 1623, 1687, 1633, 1664…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ id                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1866, 1865, 1858, 1694, 1623, 1687, 1351, 1335, 1346…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ name              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "VALORANT Champions 2022 - Playoffs", "VALORANT Cham…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ shortName         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Playoffs", "Group Stage", "Champions 2022", "Finals…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ shortName         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Playoffs", "Group Stage", "Champions 2022", "Playof…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ description       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ logoUrl           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, "https://i.imgur.com/eJZnat0.webp", "https:/…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ regionId          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 7, 7, 7, 1, 7, 7, 7, 2, 3, 4, 3, 7, 6, 2, 7, 7, 3, 3…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ countryId         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 218, 218, 218, 252, 58, 58, 252, 226, 44, 252, 44, 9…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ logoUrl           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, "https://i.imgur.com/eJZnat0.webp", NA, "htt…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ regionId          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 7, 7, 7, 7, 7, 7, 7, 7, 7, 3, 3, 7, 7, 7, 7, 7, 7, 7…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ countryId         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 218, 218, 218, 58, 58, 252, 98, 98, 98, NA, NA, 252,…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ startDate         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2022-09-09T15:46:00.000Z", "2022-08-31T15:36:00.000…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ endDate           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2022-09-19T15:46:00.000Z", "2022-09-09T15:36:00.000…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ prizePool         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, 1000000, 150000, NA, 650000, NA, 15000, NA, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ prizePoolCurrency <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "USD", "USD", "USD", "EUR", "USD", "USD", "USD", "US…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ prizePool         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, 1000000, NA, 650000, NA, NA, 675000, NA, NA,…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ prizePoolCurrency <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "USD", "USD", "USD", "USD", "USD", "USD", "USD", "US…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ url               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://liquipedia.net/valorant/VCT/2022/Champions"…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ imageUrl          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, "https://i.imgur.com/eJZnat0.webp", "https:/…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ winnerStageCount  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ loserStageCount   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ imageUrl          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, "https://i.imgur.com/eJZnat0.webp", NA, "htt…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ winnerStageCount  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, 3, NA, NA, NA, N…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ loserStageCount   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, 2, NA, NA, NA, N…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ live              <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ rank              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 9, 9, 9, 7, 9, 9, 9, 5, 5, 3, 5, 9, 5, 3, 9, 9, 3, N…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ bracketJson       <span style="color: #949494; font-style: italic;">&lt;df[,4]&gt;</span> &lt;data.frame[26 x 4]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ rank              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 9, 9, 9, 9, 9, 9, 9, 9, 9, 5, 5, 9, 9, 9, 9, 9, 10, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ bracketJson       <span style="color: #949494; font-style: italic;">&lt;df[,4]&gt;</span> &lt;data.frame[19 x 4]&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ pmtJson           <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ parent            <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> FALSE, FALSE, TRUE, TRUE, FALSE, TRUE, FALSE, TRUE, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ parentId          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1858, 1858, 1760, 1809, 1623, 1763, 1623, NA, NA, NA…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ childLabel        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Playoffs", "Group Stage", "Champions 2022", NA, "Pl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ parent            <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> FALSE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE, TRUE,…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ parentId          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1858, 1858, 1760, 1623, 1763, 1623, 1335, 1761, 1335…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ childLabel        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Playoffs", "Group Stage", "Champions 2022", "Playof…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ keywords          <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [], [], [], [], [], [], [], [], [], [], [], [], [], …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ slug              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "valorant-champions-2022-playoffs", "valorant-champ…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ seriesCount       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 14, 20, 0, 0, 14, 0, 10, 0, 0, 0, 0, 14, 0, 0, 0, 10…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ seriesCount       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 14, 20, 0, 14, 0, 10, 14, 0, 10, 6, 0, 0, 0, 7, 0, 2…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ importance        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ type              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "bracket", "bracket", "event", "event", "bracket", "…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ region            <span style="color: #949494; font-style: italic;">&lt;df[,4]&gt;</span> &lt;data.frame[26 x 4]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ country           <span style="color: #949494; font-style: italic;">&lt;df[,6]&gt;</span> &lt;data.frame[26 x 6]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ type              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "bracket", "bracket", "event", "bracket", "event", "…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ region            <span style="color: #949494; font-style: italic;">&lt;df[,4]&gt;</span> &lt;data.frame[19 x 4]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ country           <span style="color: #949494; font-style: italic;">&lt;df[,6]&gt;</span> &lt;data.frame[19 x 6]&gt;</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
