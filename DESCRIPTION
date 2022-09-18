@@ -12,7 +12,9 @@ Depends:
     R (>= 4.1.0)
 Imports: 
     httr,
-    jsonlite
+    jsonlite,
+    curl,
+    qs
 Suggests: 
     knitr,
     rmarkdown,
@@ -22,7 +24,6 @@ Suggests:
     tibble,
     janitor,
     tidyr,
-    stringr,
     testthat (>= 3.0.0)
 Encoding: UTF-8
 LazyData: true
