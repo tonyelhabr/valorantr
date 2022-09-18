@@ -71,19 +71,28 @@ get_player <- function(player_id) {
 #' events <- get_events("VALORANT Champions 2022")
 #' dplyr::glimpse(events)
 #' }
-get_events <- function(query, ..., sort_by = "startDate", ascending = FALSE, has_series = TRUE, n_results = 50) {
-  stopifnot(
-    is.character(query),
-    length(query) == 1
-  )
+get_events <- function(query = NULL, ..., sort_by = "startDate", ascending = FALSE, has_series = TRUE, n_results = 50) {
+  
+  if (!is.null(query)) {
+    stopifnot(
+      is.character(query),
+      length(query) == 1
+    )
+    
+    query <- sprintf("query=%s", URLencode(query))
+  } else {
+    query <- ""
+  }
+
   url <- sprintf(
-    "events?query=%s&sort=%s&sortAscending=%s&hasSeries=%s&take=%s", 
-    URLencode(query),
+    "events?%ssort=%s&sortAscending=%s&hasSeries=%s&take=%s", 
+    query,
     sort_by,
     tolower(ascending),
     tolower(has_series),
     n_results
-  ) 
+  )
+  
   get_ribgg_data(url)
 }
 

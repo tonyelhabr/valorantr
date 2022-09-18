@@ -5,7 +5,7 @@
 \title{Get events}
 \usage{
 get_events(
-  query,
+  query = NULL,
   ...,
   sort_by = "startDate",
   ascending = FALSE,

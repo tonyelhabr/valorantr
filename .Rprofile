@@ -1,4 +1,3 @@
-
 base::.First.sys()
 
 path_r_profile <- '~/.Rprofile'
@@ -11,7 +10,7 @@ if (interactive()) {
   suppressMessages(library(devtools))
   suppressMessages(library(usethis))
   # suppressMessages(library(pkgdown))
-  load_all()
+  pkgload::load_all()
 }
 
 
