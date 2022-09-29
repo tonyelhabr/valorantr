@@ -4,10 +4,12 @@
 \alias{load_valorant}
 \title{Load a valorant-data release}
 \usage{
-load_valorant(tag)
+load_valorant(tag, ...)
 }
 \arguments{
 \item{tag}{Tag of release in valorant-data}
+
+\item{\dots}{Extra params to pass to \code{piggyback::pb_releases} to check for existing releases.}
 }
 \description{
 Load a valorant-data release

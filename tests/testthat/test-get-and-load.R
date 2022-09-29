@@ -249,3 +249,14 @@ test_that("get_player works", {
   # expect_gt(nrow(presaved_players), 0L)
   # expect_identical(colnames(presaved_players), expected_names)
 })
+
+test_that("load_valorant works", {
+  # skip_on_ci()
+  skip_on_cran()
+  
+  expect_error(
+    load_valorant("foo"),
+    regexpr = "does not exist"
+  )
+  
+})

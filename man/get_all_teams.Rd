@@ -10,7 +10,7 @@ get_all_teams()
 a data.frame
 }
 \description{
-Get all teams' info
+Get all team info
 }
 \examples{
 \donttest{

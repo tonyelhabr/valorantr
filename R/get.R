@@ -20,10 +20,100 @@ get_ribgg_data <- function(...) {
   resp[["data"]]
 }
 
+#' Get all maps
+#' 
+#' Get all map info
+#' 
+#' @return a data.frame
+#' @export
+#' @examples 
+#' all_maps <- get_all_maps()
+#' dplyr::glimpse(all_maps)
+get_all_maps <- function() {
+  l <- c(
+    "ascent" = 1,
+    "haven" = 7,
+    "icebox" = 4,
+    "bind" = 3,
+    "breeze" = 8,
+    "fracture" = 9,
+    "pearl" = 10,
+    "split" = 2
+  )
+  data.frame(
+    "weaponId" = unname(l),
+    "weaponName" = names(l)
+  )
+}
+
+#' Get map analytics
+#' 
+#' Get map analytics
+#' 
+#' @return a data.frame
+#' @export
+#' @examples 
+#' \donttest{
+#' map_analytics <- get_map_analytics()
+#' dplyr::glimpse(map_analytics)
+#' }
+get_map_analytics <- function() {
+  get_ribgg("analytics/maps")
+}
+
+#' Get all weapons
+#' 
+#' Get all weapon info
+#' 
+#' @return a data.frame
+#' @export
+#' @examples 
+#' all_weapons <- get_all_weapons()
+#' dplyr::glimpse(all_weapons)
+get_all_weapons <- function() {
+  l <- c(
+    "vandal" = 4,
+    "phantom" = 6,
+    "classic" = 11,
+    "spectre" = 18,
+    "sheriff" = 13,
+    "ghost" = 12,
+    "operator" = 15,
+    "bulldog" = 5,
+    "frenzy" = 10,
+    "stinger" = 19,
+    "guardian" = 16,
+    "marshal" = 17,
+    "judge" = 8,
+    "shorty" = 14,
+    "odin" = 2,
+    "bucky" = 9,
+    "ares" = 3
+  )
+  data.frame(
+    "weaponId" = unname(l),
+    "weaponName" = names(l)
+  )
+}
+
+#' Get weapon analytics
+#' 
+#' Get weapon analytics
+#' 
+#' @return a data.frame
+#' @export
+#' @examples 
+#' \donttest{
+#' weapon_analytics <- get_weapon_analytics()
+#' dplyr::glimpse(weapon_analytics)
+#' }
+get_weapon_analytics <- function() {
+  get_ribgg("analytics/weapons")
+}
 
 #' Get all teams
 #' 
-#' Get all teams' info
+#' Get all team info
 #' 
 #' @return a data.frame
 #' @export

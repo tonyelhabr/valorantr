@@ -14,7 +14,8 @@ Imports:
     httr,
     jsonlite,
     curl,
-    qs
+    qs,
+    piggyback
 Suggests: 
     knitr,
     rmarkdown,
