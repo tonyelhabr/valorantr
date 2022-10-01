@@ -15,7 +15,9 @@ Imports:
     jsonlite,
     curl,
     qs,
-    piggyback
+    piggyback,
+    memoise,
+    cachem
 Suggests: 
     knitr,
     rmarkdown,
