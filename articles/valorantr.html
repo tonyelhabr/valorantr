@@ -119,37 +119,37 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">presaved_events</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_valorant.html">load_valorant</a></span><span class="op">(</span><span class="st">"events"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">presaved_events</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Rows: 13</span></span>
+<span><span class="co">#&gt; Rows: 10</span></span>
 <span><span class="co">#&gt; Columns: 29</span></span>
-<span><span class="co">#&gt; $ id                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1866, 1865, 1858, 1694, 1623, 1687, 1760, 1012, 965,…</span></span>
+<span><span class="co">#&gt; $ id                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1866, 1760, 1865, 1858, 1623, 1012, 965, 967, 761, 7…</span></span>
 <span><span class="co">#&gt; $ name              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "VALORANT Champions 2022 - Playoffs", "VALORANT Cham…</span></span>
-<span><span class="co">#&gt; $ shortName         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Playoffs", "Group Stage", "Champions 2022", "Playof…</span></span>
-<span><span class="co">#&gt; $ description       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "Par…</span></span>
-<span><span class="co">#&gt; $ logoUrl           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, "https://i.imgur.com/eJZnat0.webp", NA, "htt…</span></span>
-<span><span class="co">#&gt; $ regionId          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 1</span></span>
-<span><span class="co">#&gt; $ countryId         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 218, 218, 218, 58, 58, 252, 252, 80, 80, 80, 80, 80,…</span></span>
-<span><span class="co">#&gt; $ startDate         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2022-09-09T15:46:00.000Z", "2022-08-31T15:36:00.000…</span></span>
-<span><span class="co">#&gt; $ endDate           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2022-09-19T15:46:00.000Z", "2022-09-09T15:36:00.000…</span></span>
-<span><span class="co">#&gt; $ prizePool         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, 1000000, NA, 650000, NA, NA, NA, 1000000, NA…</span></span>
+<span><span class="co">#&gt; $ shortName         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Playoffs", "VCT 2022", "Group Stage", "Champions 20…</span></span>
+<span><span class="co">#&gt; $ description       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, "Part of the Val…</span></span>
+<span><span class="co">#&gt; $ logoUrl           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, "https://i.imgur.com/FLYiZuk.webp", NA, "https:/…</span></span>
+<span><span class="co">#&gt; $ regionId          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 7, 7, 7, 7, 7, 7, 7, 7, 7, 1</span></span>
+<span><span class="co">#&gt; $ countryId         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 218, 252, 218, 218, 58, 80, 80, 80, 80, 80</span></span>
+<span><span class="co">#&gt; $ startDate         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2022-09-09T15:46:00.000Z", "2022-01-10T17:35:00.000…</span></span>
+<span><span class="co">#&gt; $ endDate           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2022-09-19T15:46:00.000Z", "2022-09-19T17:35:00.000…</span></span>
+<span><span class="co">#&gt; $ prizePool         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, 1000000, 650000, NA, 1000000, NA, NA, 70…</span></span>
 <span><span class="co">#&gt; $ prizePoolCurrency <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "USD", "USD", "USD", "USD", "USD", "USD", "USD", "US…</span></span>
 <span><span class="co">#&gt; $ url               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://liquipedia.net/valorant/VCT/2022/Champions"…</span></span>
-<span><span class="co">#&gt; $ imageUrl          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, "https://i.imgur.com/eJZnat0.webp", NA, "htt…</span></span>
-<span><span class="co">#&gt; $ winnerStageCount  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA</span></span>
-<span><span class="co">#&gt; $ loserStageCount   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA</span></span>
+<span><span class="co">#&gt; $ imageUrl          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, "https://i.imgur.com/FLYiZuk.webp", NA, "https:/…</span></span>
+<span><span class="co">#&gt; $ winnerStageCount  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA</span></span>
+<span><span class="co">#&gt; $ loserStageCount   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA</span></span>
 <span><span class="co">#&gt; $ live              <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…</span></span>
-<span><span class="co">#&gt; $ rank              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10, 9, 9</span></span>
-<span><span class="co">#&gt; $ bracketJson       <span style="color: #949494; font-style: italic;">&lt;df[,4]&gt;</span> &lt;data.frame[13 x 4]&gt;</span></span>
-<span><span class="co">#&gt; $ pmtJson           <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA</span></span>
-<span><span class="co">#&gt; $ parent            <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> FALSE, FALSE, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE,…</span></span>
-<span><span class="co">#&gt; $ parentId          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1858, 1858, 1760, 1623, 1763, 1623, NA, 965, NA, 965…</span></span>
-<span><span class="co">#&gt; $ childLabel        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Playoffs", "Group Stage", "Champions 2022", "Playof…</span></span>
-<span><span class="co">#&gt; $ keywords          <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [], [], [], [], [], [], [], [], [], [], [], [], []</span></span>
+<span><span class="co">#&gt; $ rank              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 9, 9, 9, 9, 9, 9, 9, 9, 9, 9</span></span>
+<span><span class="co">#&gt; $ bracketJson       <span style="color: #949494; font-style: italic;">&lt;df[,4]&gt;</span> &lt;data.frame[10 x 4]&gt;</span></span>
+<span><span class="co">#&gt; $ pmtJson           <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA</span></span>
+<span><span class="co">#&gt; $ parent            <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> FALSE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, FALSE, …</span></span>
+<span><span class="co">#&gt; $ parentId          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1858, NA, 1858, 1760, 1763, 965, NA, 965, 760, NA</span></span>
+<span><span class="co">#&gt; $ childLabel        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Playoffs", NA, "Group Stage", "Champions 2022", NA,…</span></span>
+<span><span class="co">#&gt; $ keywords          <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [], [], [], [], [], [], [], [], [], []</span></span>
 <span><span class="co">#&gt; $ slug              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "valorant-champions-2022-playoffs", "valorant-champi…</span></span>
-<span><span class="co">#&gt; $ seriesCount       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 14, 20, 0, 14, 0, 10, 0, 7, 0, 23, 8, 21, 0</span></span>
-<span><span class="co">#&gt; $ importance        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0</span></span>
-<span><span class="co">#&gt; $ type              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "bracket", "bracket", "event", "bracket", "event"…</span></span>
-<span><span class="co">#&gt; $ region            <span style="color: #949494; font-style: italic;">&lt;df[,4]&gt;</span> &lt;data.frame[13 x 4]&gt;</span></span>
-<span><span class="co">#&gt; $ country           <span style="color: #949494; font-style: italic;">&lt;df[,6]&gt;</span> &lt;data.frame[13 x 6]&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; $ seriesCount       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 14, 0, 20, 0, 0, 7, 0, 23, 21, 0</span></span>
+<span><span class="co">#&gt; $ importance        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 2, 0, 0, 0, 0, 0, 0</span></span>
+<span><span class="co">#&gt; $ type              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "bracket", "circuit", "bracket", "event", "event", "…</span></span>
+<span><span class="co">#&gt; $ region            <span style="color: #949494; font-style: italic;">&lt;df[,4]&gt;</span> &lt;data.frame[10 x 4]&gt;</span></span>
+<span><span class="co">#&gt; $ country           <span style="color: #949494; font-style: italic;">&lt;df[,6]&gt;</span> &lt;data.frame[10 x 6]&gt;</span></span></code></pre></div>
 <p>See all of the releases that can be read with <code><a href="../reference/load_valorant.html">load_valorant()</a></code> [here] (<a href="https://github.com/tonyelhabr/valorant-data/blob/master/README.md" class="external-link uri">https://github.com/tonyelhabr/valorant-data/blob/master/README.md</a>).</p>
 </div>
 <div class="section level2">
@@ -161,66 +161,66 @@
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">team1</span>, <span class="va">team2</span><span class="op">)</span>, names_sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html" class="external-link">clean_names</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">vct_champs_playoffs_series</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Rows: 13</span></span>
+<span><span class="co">#&gt; Rows: 14</span></span>
 <span><span class="co">#&gt; Columns: 58</span></span>
-<span><span class="co">#&gt; $ id                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 35365, 35331, 35313, 35332, 35309, 35252, 35246, …</span></span>
+<span><span class="co">#&gt; $ id                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 35364, 35365, 35331, 35313, 35332, 35309, 35252, …</span></span>
 <span><span class="co">#&gt; $ event_id             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1866, 1866, 1866, 1866, 1866, 1866, 1866, 1866, 1…</span></span>
-<span><span class="co">#&gt; $ team1id              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6426, 17, 6344, 603, 286, 6426, 286, 224, 17, 603…</span></span>
-<span><span class="co">#&gt; $ team2id              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 286, 286, 6426, 17, 1625, 603, 6344, 1625, 738, 1…</span></span>
-<span><span class="co">#&gt; $ start_date           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2022-09-17T14:00:00.000Z", "2022-09-16T17:00:00.…</span></span>
-<span><span class="co">#&gt; $ best_of              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3</span></span>
-<span><span class="co">#&gt; $ stage                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 4, 3, 3, NA, 2, 2, 2, 1, 1, 1, 1, 1, 1</span></span>
-<span><span class="co">#&gt; $ bracket              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "losers", "losers", "winners", NA, "losers", "win…</span></span>
+<span><span class="co">#&gt; $ team1id              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6344, 6426, 17, 6344, 603, 286, 6426, 286, 224, 1…</span></span>
+<span><span class="co">#&gt; $ team2id              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6426, 286, 286, 6426, 17, 1625, 603, 6344, 1625, …</span></span>
+<span><span class="co">#&gt; $ start_date           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2022-09-18T14:00:00.000Z", "2022-09-17T14:00:00.…</span></span>
+<span><span class="co">#&gt; $ best_of              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3</span></span>
+<span><span class="co">#&gt; $ stage                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 4, 4, 3, 3, NA, 2, 2, 2, 1, 1, 1, 1, 1, 1</span></span>
+<span><span class="co">#&gt; $ bracket              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "winners", "losers", "losers", "winners", NA, "lo…</span></span>
 <span><span class="co">#&gt; $ completed            <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, T…</span></span>
 <span><span class="co">#&gt; $ live                 <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …</span></span>
-<span><span class="co">#&gt; $ win_condition        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA</span></span>
-<span><span class="co">#&gt; $ vlr_id               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "130691", "130690", "130684", NA, "130689", "1306…</span></span>
-<span><span class="co">#&gt; $ vod_url              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.twitch.tv/videos/1593430651?t=01h05m…</span></span>
-<span><span class="co">#&gt; $ ggbet_id             <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA</span></span>
-<span><span class="co">#&gt; $ pmt_status           <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA</span></span>
-<span><span class="co">#&gt; $ pmt_reddit_url       <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA</span></span>
-<span><span class="co">#&gt; $ pmt_json             <span style="color: #949494; font-style: italic;">&lt;df[,4]&gt;</span> &lt;data.frame[13 x 4]&gt;</span></span>
+<span><span class="co">#&gt; $ win_condition        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></span>
+<span><span class="co">#&gt; $ vlr_id               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "130685", "130691", "130690", "130684", NA, "1306…</span></span>
+<span><span class="co">#&gt; $ vod_url              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.twitch.tv/videos/1594403547?t=02h07m…</span></span>
+<span><span class="co">#&gt; $ ggbet_id             <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></span>
+<span><span class="co">#&gt; $ pmt_status           <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></span>
+<span><span class="co">#&gt; $ pmt_reddit_url       <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></span>
+<span><span class="co">#&gt; $ pmt_json             <span style="color: #949494; font-style: italic;">&lt;df[,4]&gt;</span> &lt;data.frame[14 x 4]&gt;</span></span>
 <span><span class="co">#&gt; $ event_name           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "VALORANT Champions 2022 - Playoffs", "VALORANT C…</span></span>
 <span><span class="co">#&gt; $ event_slug           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "valorant-champions-2022-playoffs", "valorant-cha…</span></span>
-<span><span class="co">#&gt; $ event_logo_url       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://i.imgur.com/eJZnat0.webp", "https://i.im…</span></span>
+<span><span class="co">#&gt; $ event_logo_url       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://i.imgur.com/eJZnat0.webp", "https://i…</span></span>
 <span><span class="co">#&gt; $ parent_event_id      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1858, 1858, 1858, 1858, 1858, 1858, 1858, 1858, 1…</span></span>
 <span><span class="co">#&gt; $ parent_event_name    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "VALORANT Champions 2022", "VALORANT Champions 20…</span></span>
 <span><span class="co">#&gt; $ parent_event_slug    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "valorant-champions-2022", "valorant-champions-20…</span></span>
-<span><span class="co">#&gt; $ team1_id             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6426, 17, 6344, 603, 286, 6426, 286, 224, 17, …</span></span>
-<span><span class="co">#&gt; $ team1_name           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OpTic Gaming", "FunPlus Phoenix", "LOUD", "XSET"…</span></span>
-<span><span class="co">#&gt; $ team1_short_name     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OPTC", "FPX", "LOUD", "XSET", "DRX", "OPTC", "DR…</span></span>
-<span><span class="co">#&gt; $ team1_description    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "", "FunPlus Phoenix (also known as FunPlus X or …</span></span>
-<span><span class="co">#&gt; $ team1_website_url    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://opticgaming.gg/", "https://web.archive.o…</span></span>
-<span><span class="co">#&gt; $ team1_logo_url       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://i.imgur.com/2nXAtuC.png", "https://i.img…</span></span>
-<span><span class="co">#&gt; $ team1_liquipedia_url <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://liquipedia.net/valorant/OpTic_Gaming", "…</span></span>
-<span><span class="co">#&gt; $ team1_twitter_url    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://twitter.com/OpTic", "https://twitter.com…</span></span>
-<span><span class="co">#&gt; $ team1_twitch_url     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.twitch.tv/opticgaming", NA, "https:/…</span></span>
-<span><span class="co">#&gt; $ team1_vlr_url        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.vlr.gg/team/8127/optic-gaming", "htt…</span></span>
-<span><span class="co">#&gt; $ team1_youtube_url    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.youtube.com/opticcraft", "https://ww…</span></span>
-<span><span class="co">#&gt; $ team1_founded_date   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2022-02-10T00:00:00+00:00", "2017-12-21T06:47:00…</span></span>
-<span><span class="co">#&gt; $ team1_country_id     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 226, 252, 30, 226, 113, 226, 113, 252, 252, 226, …</span></span>
-<span><span class="co">#&gt; $ team1_region_id      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2, 1, 4, 2, 3, 2, 3, 1, 1, 2, 2, 3, 4</span></span>
-<span><span class="co">#&gt; $ team1_rank           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6, 3, 2, 5, 1, 6, 1, 8, 3, 5, 6, 1, 9</span></span>
-<span><span class="co">#&gt; $ team1_region_rank    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2, 1, 1, 1, 1, 2, 1, 3, 1, 1, 2, 1, 2</span></span>
-<span><span class="co">#&gt; $ team1_aliases        <span style="color: #949494; font-style: italic;">&lt;list&lt;list&gt;&gt;</span> ["OpTic"], [&lt;"FPX", "FunPlus"&gt;], [&lt;NULL&gt;], ["XSET…</span></span>
-<span><span class="co">#&gt; $ team2_id             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 286, 286, 6426, 17, 1625, 603, 6344, 1625, 738, 1…</span></span>
-<span><span class="co">#&gt; $ team2_name           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "DRX", "DRX", "OpTic Gaming", "FunPlus Phoenix", …</span></span>
-<span><span class="co">#&gt; $ team2_short_name     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "DRX", "DRX", "OPTC", "FPX", "FNC", "XSET", "LOUD…</span></span>
-<span><span class="co">#&gt; $ team2_description    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Vision Strikers is a Korean VALORANT team formed…</span></span>
-<span><span class="co">#&gt; $ team2_website_url    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://drx.gg/", "https://drx.gg/", "https://op…</span></span>
-<span><span class="co">#&gt; $ team2_logo_url       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://i.imgur.com/nSpWLA0.png", "https://i.img…</span></span>
-<span><span class="co">#&gt; $ team2_liquipedia_url <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://liquipedia.net/valorant/DRX", "https://l…</span></span>
-<span><span class="co">#&gt; $ team2_twitter_url    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://twitter.com/DRX_VS", "https://twitter.co…</span></span>
-<span><span class="co">#&gt; $ team2_twitch_url     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.twitch.tv/drx_vs", "https://www.twit…</span></span>
-<span><span class="co">#&gt; $ team2_vlr_url        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.vlr.gg/team/8185/drx", "https…</span></span>
-<span><span class="co">#&gt; $ team2_youtube_url    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.youtube.com/channel/UCJN5mgLqkPCTVC5…</span></span>
-<span><span class="co">#&gt; $ team2_founded_date   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2020-06-01T15:26:00+00:00", "2020-06-01T15:26:00…</span></span>
-<span><span class="co">#&gt; $ team2_country_id     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 113, 113, 226, 252, 252, 226, 30, 252, 43, 252, 2…</span></span>
-<span><span class="co">#&gt; $ team2_region_id      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 3, 3, 2, 1, 1, 2, 4, 1, 4, 1, 1, 1, 4</span></span>
-<span><span class="co">#&gt; $ team2_rank           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 1, 6, 3, 7, 5, 2, 7, 9, 7, 8, 3, 2</span></span>
-<span><span class="co">#&gt; $ team2_region_rank    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 1, 2, 1, 2, 1, 1, 2, 2, 2, 3, 1, 1</span></span>
-<span><span class="co">#&gt; $ team2_aliases        <span style="color: #949494; font-style: italic;">&lt;list&lt;list&gt;&gt;</span> ["DRX"], ["DRX"], ["OpTic"], [&lt;"FPX", "FunPlus"&gt;]…</span></span>
-<span><span class="co">#&gt; $ matches              <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[5 x 28]&gt;], [&lt;data.frame[3 x 28]&gt;], […</span></span></code></pre></div>
+<span><span class="co">#&gt; $ team1_id             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6344, 6426, 17, 6344, 603, 286, 6426, 286, 224, 1…</span></span>
+<span><span class="co">#&gt; $ team1_name           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "LOUD", "OpTic Gaming", "FunPlus Phoenix", "LOUD"…</span></span>
+<span><span class="co">#&gt; $ team1_short_name     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "LOUD", "OPTC", "FPX", "LOUD", "XSET", "DRX", "OP…</span></span>
+<span><span class="co">#&gt; $ team1_description    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "", "", "FunPlus Phoenix (also known as FunPlus X…</span></span>
+<span><span class="co">#&gt; $ team1_website_url    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://loud.gg/", "https://opticgaming.gg/", "h…</span></span>
+<span><span class="co">#&gt; $ team1_logo_url       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://i.imgur.com/AiZFd1I.png", "https://i.img…</span></span>
+<span><span class="co">#&gt; $ team1_liquipedia_url <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://liquipedia.net/valorant/LOUD", "https://…</span></span>
+<span><span class="co">#&gt; $ team1_twitter_url    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://twitter.com/loudgg", "https://twitter.co…</span></span>
+<span><span class="co">#&gt; $ team1_twitch_url     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.twitch.tv/loud", "https://www.twitch…</span></span>
+<span><span class="co">#&gt; $ team1_vlr_url        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.vlr.gg/team/6961/loud", "https://www…</span></span>
+<span><span class="co">#&gt; $ team1_youtube_url    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.youtube.com/channel/UC7iwNp4GUynlGXv…</span></span>
+<span><span class="co">#&gt; $ team1_founded_date   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2022-02-01T00:00:00+00:00", "2022-02-10T00:00:00…</span></span>
+<span><span class="co">#&gt; $ team1_country_id     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 30, 226, 252, 30, 226, 113, 226, 113, 252, 252, 2…</span></span>
+<span><span class="co">#&gt; $ team1_region_id      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 4, 2, 1, 4, 2, 3, 2, 3, 1, 1, 2, 2, 3, 4</span></span>
+<span><span class="co">#&gt; $ team1_rank           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 4, 1, 6, 3, 2, 3, 8, 4, 6, 2, 3, 9</span></span>
+<span><span class="co">#&gt; $ team1_region_rank    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 1, 1, 1, 2, 1, 1, 1, 3, 1, 2, 1, 1, 2</span></span>
+<span><span class="co">#&gt; $ team1_aliases        <span style="color: #949494; font-style: italic;">&lt;list&lt;list&gt;&gt;</span> [&lt;NULL&gt;], ["OpTic"], [&lt;"FPX", "FunPlus"&gt;], [&lt;NULL…</span></span>
+<span><span class="co">#&gt; $ team2_id             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6426, 286, 286, 6426, 17, 1625, 603, 6344, 1625, …</span></span>
+<span><span class="co">#&gt; $ team2_name           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OpTic Gaming", "DRX", "DRX", "OpTic Gaming", "Fu…</span></span>
+<span><span class="co">#&gt; $ team2_short_name     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OPTC", "DRX", "DRX", "OPTC", "FPX", "FNC", "XSET…</span></span>
+<span><span class="co">#&gt; $ team2_description    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "", "Vision Strikers is a Korean VALORANT team fo…</span></span>
+<span><span class="co">#&gt; $ team2_website_url    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://opticgaming.gg/", "https://drx.gg/", "ht…</span></span>
+<span><span class="co">#&gt; $ team2_logo_url       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://i.imgur.com/2nXAtuC.png", "https:…</span></span>
+<span><span class="co">#&gt; $ team2_liquipedia_url <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://liquipedia.net/valorant/OpTic_Gaming", "…</span></span>
+<span><span class="co">#&gt; $ team2_twitter_url    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://twitter.com/OpTic", "https://twitter.com…</span></span>
+<span><span class="co">#&gt; $ team2_twitch_url     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.twitch.tv/opticgaming", "https://www…</span></span>
+<span><span class="co">#&gt; $ team2_vlr_url        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.vlr.gg/team/8127/optic-gaming", "htt…</span></span>
+<span><span class="co">#&gt; $ team2_youtube_url    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.youtube.com/opticcraft", "https://ww…</span></span>
+<span><span class="co">#&gt; $ team2_founded_date   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2022-02-10T00:00:00+00:00", "2020-06-01T15:26:00…</span></span>
+<span><span class="co">#&gt; $ team2_country_id     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 226, 113, 113, 226, 252, 252, 226, 30, 252, 43, 2…</span></span>
+<span><span class="co">#&gt; $ team2_region_id      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2, 3, 3, 2, 1, 1, 2, 4, 1, 4, 1, 1, 1, 4</span></span>
+<span><span class="co">#&gt; $ team2_rank           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2, 3, 3, 2, 4, 7, 6, 1, 7, 9, 7, 8, 4, 1</span></span>
+<span><span class="co">#&gt; $ team2_region_rank    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 3, 1, 1</span></span>
+<span><span class="co">#&gt; $ team2_aliases        <span style="color: #949494; font-style: italic;">&lt;list&lt;list&gt;&gt;</span> ["OpTic"], ["DRX"], ["DRX"], ["OpTic"], [&lt;"FPX", …</span></span>
+<span><span class="co">#&gt; $ matches              <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[5 x 28]&gt;], [&lt;data.frame[5 x 28]&gt;], […</span></span></code></pre></div>
 <p>We can filter for a specific series from the set of series.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">optic_liquid_series</span> <span class="op">&lt;-</span> <span class="va">vct_champs_playoffs_series</span> <span class="op">|&gt;</span> </span>
@@ -265,8 +265,8 @@
 <span><span class="co">#&gt; $ team1_founded_date   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2022-02-10T00:00:00+00:00"</span></span>
 <span><span class="co">#&gt; $ team1_country_id     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 226</span></span>
 <span><span class="co">#&gt; $ team1_region_id      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2</span></span>
-<span><span class="co">#&gt; $ team1_rank           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6</span></span>
-<span><span class="co">#&gt; $ team1_region_rank    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2</span></span>
+<span><span class="co">#&gt; $ team1_rank           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2</span></span>
+<span><span class="co">#&gt; $ team1_region_rank    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1</span></span>
 <span><span class="co">#&gt; $ team1_aliases        <span style="color: #949494; font-style: italic;">&lt;list&lt;list&gt;&gt;</span> ["OpTic"]</span></span>
 <span><span class="co">#&gt; $ team2_id             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 224</span></span>
 <span><span class="co">#&gt; $ team2_name           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Team Liquid"</span></span>
@@ -290,21 +290,21 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">presaved_series</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_valorant.html">load_valorant</a></span><span class="op">(</span><span class="st">"series"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">presaved_series</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Rows: 222</span></span>
+<span><span class="co">#&gt; Rows: 224</span></span>
 <span><span class="co">#&gt; Columns: 26</span></span>
-<span><span class="co">#&gt; $ id              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 35331, 35313, 35331, 35313, 35332, 35309, 35252, 35246…</span></span>
+<span><span class="co">#&gt; $ id              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 35364, 35365, 35331, 35313, 35331, 35313, 35332, 35309…</span></span>
 <span><span class="co">#&gt; $ eventId         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1866, 1866, 1866, 1866, 1866, 1866, 1866, 1866, 1866, …</span></span>
-<span><span class="co">#&gt; $ team1Id         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 17, 6344, 17, 6344, 603, 286, 6426, 286, 224, 17, 603,…</span></span>
-<span><span class="co">#&gt; $ team2Id         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 286, 6426, 286, 6426, 17, 1625, 603, 6344, 1625, 738, …</span></span>
-<span><span class="co">#&gt; $ startDate       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2022-09-16T17:00:00.000Z", "2022-09-16T14:00:00.000Z"…</span></span>
-<span><span class="co">#&gt; $ bestOf          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …</span></span>
-<span><span class="co">#&gt; $ stage           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 3, 3, 3, 3, NA, 2, 2, 2, 1, 1, 1, 1, 1, 1, 4, 3, 2, 1,…</span></span>
-<span><span class="co">#&gt; $ bracket         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "losers", "winners", "losers", "winners", NA, "losers"…</span></span>
+<span><span class="co">#&gt; $ team1Id         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6344, 6426, 17, 6344, 17, 6344, 603, 286, 6426, 286, 2…</span></span>
+<span><span class="co">#&gt; $ team2Id         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6426, 286, 286, 6426, 286, 6426, 17, 1625, 603, 6344, …</span></span>
+<span><span class="co">#&gt; $ startDate       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "2022-09-18T14:00:00.000Z", "2022-09-17T14:00:00.000Z"…</span></span>
+<span><span class="co">#&gt; $ bestOf          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …</span></span>
+<span><span class="co">#&gt; $ stage           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 4, 4, 3, 3, 3, 3, NA, 2, 2, 2, 1, 1, 1, 1, 1, 1, 4, 3,…</span></span>
+<span><span class="co">#&gt; $ bracket         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "winners", "losers", "losers", "winners", "losers", "w…</span></span>
 <span><span class="co">#&gt; $ completed       <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, …</span></span>
 <span><span class="co">#&gt; $ live            <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…</span></span>
 <span><span class="co">#&gt; $ winCondition    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span></span>
-<span><span class="co">#&gt; $ vlrId           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "130690", "130684", "130690", "130684", NA, "130689", …</span></span>
-<span><span class="co">#&gt; $ vodUrl          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.twitch.tv/videos/1592432114?t=03h29m24s",…</span></span>
+<span><span class="co">#&gt; $ vlrId           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "130685", "130691", "130690", "130684", "130690", "130…</span></span>
+<span><span class="co">#&gt; $ vodUrl          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.twitch.tv/videos/1594403547?t=02h07m19s",…</span></span>
 <span><span class="co">#&gt; $ ggbetId         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span></span>
 <span><span class="co">#&gt; $ pmtStatus       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span></span>
 <span><span class="co">#&gt; $ pmtRedditUrl    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span></span>
@@ -317,7 +317,7 @@
 <span><span class="co">#&gt; $ parentEventSlug <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "valorant-champions-2022", "valorant-champions-2022", …</span></span>
 <span><span class="co">#&gt; $ team1           <span style="color: #949494; font-style: italic;">&lt;df[,17]&gt;</span> &lt;data.frame[26 x 17]&gt;</span></span>
 <span><span class="co">#&gt; $ team2           <span style="color: #949494; font-style: italic;">&lt;df[,17]&gt;</span> &lt;data.frame[26 x 17]&gt;</span></span>
-<span><span class="co">#&gt; $ matches         <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[3 x 28]&gt;], [&lt;data.frame[3 x 28]&gt;], [&lt;data…</span></span></code></pre></div>
+<span><span class="co">#&gt; $ matches         <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> [&lt;data.frame[5 x 28]&gt;], [&lt;data.frame[5 x 28]&gt;], [&lt;data…</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="matches">Matches<a class="anchor" aria-label="anchor" href="#matches"></a>
@@ -381,32 +381,32 @@
 <span><span class="co">#&gt; $ ign             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Marved", "dimasick", "ScreaM", "soulcas", "crashies",…</span></span>
 <span><span class="co">#&gt; $ first_name      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Jimmy ", "Dmitriy ", "Adil", "Dom", "Austin", "Jaccob…</span></span>
 <span><span class="co">#&gt; $ last_name       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Nguyen", "Matvienko", "Benrlitom", "Sulcas", "Roberts…</span></span>
-<span><span class="co">#&gt; $ team_id         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6426, 224, 224, 224, 6426, 6426, 6426, 6426, 224, 224</span></span>
-<span><span class="co">#&gt; $ team_short_name <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OPTC", "TL", "TL", "TL", "OPTC", "OPTC", "OPTC", "OPT…</span></span></code></pre></div>
+<span><span class="co">#&gt; $ team_id         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 6426, 224, 224, 224, NA, 6426, 6426, NA, 224, 224</span></span>
+<span><span class="co">#&gt; $ team_short_name <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "OPTC", "TL", "TL", "TL", NA, "OPTC", "OPTC", NA, "TL"…</span></span></code></pre></div>
 <p>We can load pre-saved matches without <code><a href="../reference/get_matches.html">get_matches()</a></code>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">presaved_matches</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_valorant.html">load_valorant</a></span><span class="op">(</span><span class="st">"matches"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">presaved_matches</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 111</span></span>
+<span><span class="co">#&gt; [1] 113</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">presaved_matches</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of 28</span></span>
-<span><span class="co">#&gt;  $ id             : int 35331</span></span>
+<span><span class="co">#&gt;  $ id             : int 35364</span></span>
 <span><span class="co">#&gt;  $ eventId        : int 1866</span></span>
-<span><span class="co">#&gt;  $ team1Id        : int 17</span></span>
-<span><span class="co">#&gt;  $ team2Id        : int 286</span></span>
-<span><span class="co">#&gt;  $ startDate      : chr "2022-09-16T17:00:00.000Z"</span></span>
-<span><span class="co">#&gt;  $ bestOf         : int 3</span></span>
-<span><span class="co">#&gt;  $ stage          : int 3</span></span>
-<span><span class="co">#&gt;  $ bracket        : chr "losers"</span></span>
-<span><span class="co">#&gt;  $ completed      : logi TRUE</span></span>
-<span><span class="co">#&gt;  $ live           : logi FALSE</span></span>
+<span><span class="co">#&gt;  $ team1Id        : int 6344</span></span>
+<span><span class="co">#&gt;  $ team2Id        : int 6426</span></span>
+<span><span class="co">#&gt;  $ startDate      : chr "2022-09-18T14:00:00.000Z"</span></span>
+<span><span class="co">#&gt;  $ bestOf         : int 5</span></span>
+<span><span class="co">#&gt;  $ stage          : int 4</span></span>
+<span><span class="co">#&gt;  $ bracket        : chr "winners"</span></span>
+<span><span class="co">#&gt;  $ completed      : logi FALSE</span></span>
+<span><span class="co">#&gt;  $ live           : logi TRUE</span></span>
 <span><span class="co">#&gt;  $ winCondition   : NULL</span></span>
-<span><span class="co">#&gt;  $ vlrId          : chr "130690"</span></span>
-<span><span class="co">#&gt;  $ vodUrl         : chr "https://www.twitch.tv/videos/1592432114?t=03h29m24s"</span></span>
+<span><span class="co">#&gt;  $ vlrId          : chr "130685"</span></span>
+<span><span class="co">#&gt;  $ vodUrl         : chr "https://www.twitch.tv/videos/1594403547?t=02h07m19s"</span></span>
 <span><span class="co">#&gt;  $ ggbetId        : NULL</span></span>
 <span><span class="co">#&gt;  $ pmtStatus      : NULL</span></span>
 <span><span class="co">#&gt;  $ pmtRedditUrl   : NULL</span></span>
-<span><span class="co">#&gt;  $ pmtJson        :List of 4</span></span>
+<span><span class="co">#&gt;  $ pmtJson        :List of 2</span></span>
 <span><span class="co">#&gt;  $ eventName      : chr "VALORANT Champions 2022 - Playoffs"</span></span>
 <span><span class="co">#&gt;  $ eventSlug      : chr "valorant-champions-2022-playoffs"</span></span>
 <span><span class="co">#&gt;  $ eventLogoUrl   : chr "https://i.imgur.com/eJZnat0.webp"</span></span>
@@ -415,9 +415,9 @@
 <span><span class="co">#&gt;  $ parentEventSlug: chr "valorant-champions-2022"</span></span>
 <span><span class="co">#&gt;  $ team1          :List of 17</span></span>
 <span><span class="co">#&gt;  $ team2          :List of 17</span></span>
-<span><span class="co">#&gt;  $ matches        :'data.frame': 3 obs. of  27 variables:</span></span>
+<span><span class="co">#&gt;  $ matches        :'data.frame': 5 obs. of  27 variables:</span></span>
 <span><span class="co">#&gt;  $ stats          :List of 3</span></span>
-<span><span class="co">#&gt;  $ playerStats    :'data.frame': 460 obs. of  23 variables:</span></span></code></pre></div>
+<span><span class="co">#&gt;  $ playerStats    :'data.frame': 950 obs. of  23 variables:</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="match-details">Match details<a class="anchor" aria-label="anchor" href="#match-details"></a>
@@ -459,48 +459,48 @@
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">presaved_match_details</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_valorant.html">load_valorant</a></span><span class="op">(</span><span class="st">"match_details"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">presaved_match_details</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 341</span></span>
+<span><span class="co">#&gt; [1] 351</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">presaved_match_details</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, max.level <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of 4</span></span>
-<span><span class="co">#&gt;  $ id       : int 79258</span></span>
-<span><span class="co">#&gt;  $ events   :'data.frame':   224 obs. of  19 variables:</span></span>
-<span><span class="co">#&gt;   ..$ roundId                      : int [1:224] 1235401 1235401 1235401 1235401 1235401 1235401 1235401 1235401 1235401 1235401 ...</span></span>
-<span><span class="co">#&gt;   ..$ roundNumber                  : int [1:224] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span><span class="co">#&gt;   ..$ roundTimeMillis              : int [1:224] 0 28244 37533 53139 59143 61421 62296 62890 67296 68833 ...</span></span>
-<span><span class="co">#&gt;   ..$ killId                       : int [1:224] NA 10012848 NA 10012852 10012853 10012849 10012854 10012850 10012851 NA ...</span></span>
-<span><span class="co">#&gt;   ..$ tradedByKillId               : int [1:224] NA NA NA NA 10012849 NA 10012850 NA NA NA ...</span></span>
-<span><span class="co">#&gt;   ..$ tradedForKillId              : int [1:224] NA NA NA NA NA 10012853 NA 10012854 NA NA ...</span></span>
-<span><span class="co">#&gt;   ..$ bombId                       : int [1:224] NA NA 941849 NA NA NA NA NA NA 941849 ...</span></span>
-<span><span class="co">#&gt;   ..$ resId                        : int [1:224] NA NA NA NA NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;   ..$ playerId                     : int [1:224] NA 1256 814 3043 3043 452 2225 452 452 2335 ...</span></span>
-<span><span class="co">#&gt;   ..$ assists                      :List of 224</span></span>
-<span><span class="co">#&gt;   ..$ referencePlayerId            : int [1:224] NA 582 NA 814 1550 3043 1251 2225 1256 NA ...</span></span>
-<span><span class="co">#&gt;   ..$ eventType                    : chr [1:224] "start" "kill" "plant" "kill" ...</span></span>
-<span><span class="co">#&gt;   ..$ damageType                   : chr [1:224] NA "ability" NA "weapon" ...</span></span>
-<span><span class="co">#&gt;   ..$ weaponId                     : int [1:224] NA NA NA 11 11 11 10 11 12 NA ...</span></span>
-<span><span class="co">#&gt;   ..$ ability                      : chr [1:224] NA "Paint Shells" NA NA ...</span></span>
-<span><span class="co">#&gt;   ..$ impact                       : chr [1:224] "0" "0.1469621210850619" "0.0035761740493228666" "0.23871486818900425" ...</span></span>
-<span><span class="co">#&gt;   ..$ attackingWinProbabilityBefore: chr [1:224] "0.4791064486198983" "0.47924524728882717" "0.3967835814313657" "0.4611269008416026" ...</span></span>
-<span><span class="co">#&gt;   ..$ attackingWinProbabilityAfter : chr [1:224] "0.4791064486198983" "0.33228312620376527" "0.39320740738204285" "0.22241203265259837" ...</span></span>
-<span><span class="co">#&gt;   ..$ attackingTeamNumber          : int [1:224] 2 2 2 2 2 2 2 2 2 2 ...</span></span>
-<span><span class="co">#&gt;  $ locations:'data.frame':   1336 obs. of  6 variables:</span></span>
-<span><span class="co">#&gt;   ..$ roundNumber    : int [1:1336] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span><span class="co">#&gt;   ..$ playerId       : int [1:1336] 452 582 814 1251 1256 1550 2225 2335 2359 3043 ...</span></span>
-<span><span class="co">#&gt;   ..$ roundTimeMillis: int [1:1336] 28244 28244 28244 28244 28244 28244 28244 28244 28244 28244 ...</span></span>
-<span><span class="co">#&gt;   ..$ locationX      : num [1:1336] 814 885 888 784 760 ...</span></span>
-<span><span class="co">#&gt;   ..$ locationY      : num [1:1336] 632 324 390 417 204 ...</span></span>
-<span><span class="co">#&gt;   ..$ viewRadians    : num [1:1336] 4.59 NA -0.792 -0.334 2.172 ...</span></span>
-<span><span class="co">#&gt;  $ economies:'data.frame':   240 obs. of  10 variables:</span></span>
-<span><span class="co">#&gt;   ..$ roundId       : int [1:240] 1235401 1235401 1235401 1235401 1235401 1235401 1235401 1235401 1235401 1235401 ...</span></span>
-<span><span class="co">#&gt;   ..$ roundNumber   : int [1:240] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span><span class="co">#&gt;   ..$ playerId      : int [1:240] 2335 3043 1251 452 1550 2359 582 2225 814 1256 ...</span></span>
-<span><span class="co">#&gt;   ..$ agentId       : int [1:240] 19 17 17 6 16 9 9 6 19 2 ...</span></span>
-<span><span class="co">#&gt;   ..$ score         : int [1:240] 71 446 0 801 102 50 0 190 0 301 ...</span></span>
-<span><span class="co">#&gt;   ..$ weaponId      : int [1:240] 10 11 12 11 12 11 11 10 10 12 ...</span></span>
-<span><span class="co">#&gt;   ..$ armorId       : int [1:240] NA NA NA NA NA 1 NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;   ..$ remainingCreds: int [1:240] 150 0 100 200 100 0 0 150 100 0 ...</span></span>
-<span><span class="co">#&gt;   ..$ spentCreds    : int [1:240] 650 800 700 600 700 800 800 650 700 800 ...</span></span>
-<span><span class="co">#&gt;   ..$ loadoutValue  : int [1:240] 650 800 500 600 700 800 800 650 700 800 ...</span></span></code></pre></div>
+<span><span class="co">#&gt;  $ id       : int 79333</span></span>
+<span><span class="co">#&gt;  $ events   :'data.frame':   254 obs. of  19 variables:</span></span>
+<span><span class="co">#&gt;   ..$ roundId                      : int [1:254] 1236791 1236791 1236791 1236791 1236791 1236791 1236791 1236791 1236791 1236791 ...</span></span>
+<span><span class="co">#&gt;   ..$ roundNumber                  : int [1:254] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;   ..$ roundTimeMillis              : int [1:254] 0 5900 9543 12487 21545 22415 37299 42715 46153 47080 ...</span></span>
+<span><span class="co">#&gt;   ..$ killId                       : int [1:254] NA 10022624 10022621 10022627 NA 10022625 10022626 10022622 10022623 10022628 ...</span></span>
+<span><span class="co">#&gt;   ..$ tradedByKillId               : int [1:254] NA NA NA NA NA NA NA NA 10022628 NA ...</span></span>
+<span><span class="co">#&gt;   ..$ tradedForKillId              : int [1:254] NA NA NA NA NA NA NA NA NA 10022623 ...</span></span>
+<span><span class="co">#&gt;   ..$ bombId                       : int [1:254] NA NA NA NA 942770 NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;   ..$ resId                        : logi [1:254] NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;   ..$ playerId                     : int [1:254] NA 2895 6037 2294 2294 3211 4746 2841 2841 2294 ...</span></span>
+<span><span class="co">#&gt;   ..$ assists                      :List of 254</span></span>
+<span><span class="co">#&gt;   ..$ referencePlayerId            : int [1:254] NA 2483 398 2716 NA 6037 3211 4746 2895 2841 ...</span></span>
+<span><span class="co">#&gt;   ..$ eventType                    : chr [1:254] "start" "kill" "kill" "kill" ...</span></span>
+<span><span class="co">#&gt;   ..$ damageType                   : chr [1:254] NA "weapon" "weapon" "weapon" ...</span></span>
+<span><span class="co">#&gt;   ..$ weaponId                     : int [1:254] NA 10 12 10 NA 10 12 12 12 10 ...</span></span>
+<span><span class="co">#&gt;   ..$ ability                      : chr [1:254] NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;   ..$ impact                       : chr [1:254] "0" "0.18319541905161046" "0.18623942103874158" "0.09063667924412677" ...</span></span>
+<span><span class="co">#&gt;   ..$ attackingWinProbabilityBefore: chr [1:254] "0.47114773136815274" "0.4774533440497894" "0.6606487631013999" "0.8468881841401414" ...</span></span>
+<span><span class="co">#&gt;   ..$ attackingWinProbabilityAfter : chr [1:254] "0.47114773136815274" "0.6606487631013999" "0.8468881841401414" "0.9375248633842682" ...</span></span>
+<span><span class="co">#&gt;   ..$ attackingTeamNumber          : int [1:254] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ locations:'data.frame':   1465 obs. of  6 variables:</span></span>
+<span><span class="co">#&gt;   ..$ roundNumber    : int [1:1465] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;   ..$ playerId       : int [1:1465] 398 2294 2483 2716 2841 2895 3211 4746 4748 6037 ...</span></span>
+<span><span class="co">#&gt;   ..$ roundTimeMillis: int [1:1465] 5900 5900 5900 5900 5900 5900 5900 5900 5900 5900 ...</span></span>
+<span><span class="co">#&gt;   ..$ locationX      : num [1:1465] 432 350 335 428 838 ...</span></span>
+<span><span class="co">#&gt;   ..$ locationY      : num [1:1465] 306 411 346 281 288 ...</span></span>
+<span><span class="co">#&gt;   ..$ viewRadians    : num [1:1465] 3.97 6.11 NA 3.83 3.12 ...</span></span>
+<span><span class="co">#&gt;  $ economies:'data.frame':   280 obs. of  10 variables:</span></span>
+<span><span class="co">#&gt;   ..$ roundId       : int [1:280] 1236791 1236791 1236791 1236791 1236791 1236791 1236791 1236791 1236791 1236791 ...</span></span>
+<span><span class="co">#&gt;   ..$ roundNumber   : int [1:280] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;   ..$ playerId      : int [1:280] 4748 2483 2841 4746 398 6037 2895 2294 3211 2716 ...</span></span>
+<span><span class="co">#&gt;   ..$ agentId       : int [1:280] 12 4 5 5 11 11 16 4 16 12 ...</span></span>
+<span><span class="co">#&gt;   ..$ score         : int [1:280] 0 178 397 308 55 230 276 385 193 0 ...</span></span>
+<span><span class="co">#&gt;   ..$ weaponId      : int [1:280] 10 11 11 12 12 12 10 10 10 13 ...</span></span>
+<span><span class="co">#&gt;   ..$ armorId       : int [1:280] NA 1 1 NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;   ..$ remainingCreds: int [1:280] 0 0 0 100 0 50 150 50 100 0 ...</span></span>
+<span><span class="co">#&gt;   ..$ spentCreds    : int [1:280] 800 800 800 700 800 750 650 750 700 800 ...</span></span>
+<span><span class="co">#&gt;   ..$ loadoutValue  : int [1:280] 800 800 400 700 950 900 650 750 700 800 ...</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
