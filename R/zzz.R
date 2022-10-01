@@ -3,12 +3,12 @@
 #' @importFrom memoise memoise timeout
 .onLoad <- function(libname, pkgname) {
 
-  memoise_option <- getOption("valorantr.cache", default = "memory")
-  if (!(memoise_option %in% c("memory", "off"))) {
-    memoise_option <- "memory"
+  memoise_option <- getOption("valorantr.cache", default = TRUE)
+  if (isFALSE(is.logical(memoise_option))) {
+    memoise_option <- TRUE
   }
   
-  if (memoise_option == "memory") {
+  if (isTRUE(memoise_option)) {
     one_day <- 60 * 60 * 24
     cache <- cachem::cache_mem()
     cache_function <- function(f, name = deparse(substitute(f))) {
