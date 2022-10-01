@@ -4,7 +4,7 @@
 \alias{get_map_analytics}
 \title{Get map analytics}
 \usage{
-get_map_analytics()
+get_map_analytics(region_id = NULL, event_id = NULL, patch_id = NULL)
 }
 \value{
 a data.frame
