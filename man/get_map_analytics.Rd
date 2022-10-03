@@ -6,6 +6,13 @@
 \usage{
 get_map_analytics(region_id = NULL, event_id = NULL, patch_id = NULL)
 }
+\arguments{
+\item{region_id}{Region ID (optional). See \code{get_all_region_names()}.}
+
+\item{event_id}{Event ID (optional). See \code{get_events()}.}
+
+\item{patch_id}{Patch ID (optional). \code{patch_id = 12} is patch 4.0. \code{patch_id = 23} is patch 5.0. Versions are incremented by 1.}
+}
 \value{
 a data.frame
 }

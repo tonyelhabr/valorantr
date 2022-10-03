@@ -192,28 +192,6 @@ test_that("get_matches works", {
   expect_identical(names(presaved_match_details[[1]]), expected_names)
 })
 
-test_that("get_all_teams works", {
-  # skip_on_ci()
-  skip_on_cran()
-  
-  all_teams <- get_all_teams()
-  expect_true(is.data.frame(all_teams))
-  expect_gt(nrow(all_teams), 0L)
-  
-  expected_names <- c(
-    "id", 
-    "name", 
-    "shortName", 
-    "countryId"
-  )
-  
-  expect_identical(colnames(all_teams), expected_names)
-  
-  # presaved_teams <- load_valorant("teams")
-  # expect_gt(nrow(presaved_teams), 0L)
-  # expect_identical(colnames(presaved_teams), expected_names)
-})
-
 test_that("get_player works", {
   # skip_on_ci()
   skip_on_cran()

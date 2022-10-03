@@ -11,7 +11,8 @@ test_that("get_all_x_names functions work", {
     "region" = 7L,
     "weapon" = 17L,
     "agent" = 19L,
-    "map" = 8L
+    "map" = 8L,
+    "role" = 4L
   ) |> 
     purrr::iwalk(
       ~test_names_f(

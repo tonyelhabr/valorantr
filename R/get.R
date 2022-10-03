@@ -61,6 +61,28 @@ get_all_region_names <- function() {
   )
 }
 
+#' Get all roles
+#' 
+#' Get all role info
+#' 
+#' @return a data.frame
+#' @export
+#' @examples 
+#' all_roles <- get_all_role_names()
+#' dplyr::glimpse(all_roles)
+get_all_role_names <- function() {
+  list_to_id_df(
+    c(
+      "controller" = 3,
+      "duelist" = 2,
+      "initiator" = 1,
+      "sentinel" = 4
+    ),
+    prefix = "role"
+  )
+}
+
+
 #' Get all agents
 #' 
 #' Get all agent info
@@ -102,6 +124,11 @@ get_all_agent_names <- function() {
 #' Get agent analytics
 #' 
 #' @return a data.frame
+#' @param map_id Map ID (optional). See `get_all_map_names()`.
+#' @param region_id Region ID (optional). See `get_all_region_names()`.
+#' @param role_id Role ID (optional). See `get_all_role_names()`.
+#' @param patch_id Patch ID (optional). `patch_id = 12` is patch 4.0. `patch_id = 23` is patch 5.0. Versions are incremented by 1.
+#' @param event_id Event ID (optional). See `get_events()`.
 #' @export
 #' @examples 
 #' \donttest{
@@ -150,6 +177,7 @@ get_all_map_names <- function() {
 #' Get composition analytics
 #' 
 #' @return a data.frame
+#' @inheritParams get_agent_analytics
 #' @export
 #' @examples 
 #' \donttest{
@@ -172,6 +200,7 @@ get_composition_analytics <- function(map_id = NULL, region_id = NULL, event_id 
 #' Get map analytics
 #' 
 #' @return a data.frame
+#' @inheritParams get_agent_analytics
 #' @export
 #' @examples 
 #' \donttest{
@@ -226,6 +255,8 @@ get_all_weapon_names <- function() {
 #' Get weapon analytics
 #' 
 #' @return a data.frame
+#' @inheritParams get_agent_analytics
+#' @param side If not `NULL`, then either `atk` or `def`.
 #' @export
 #' @examples 
 #' \donttest{
