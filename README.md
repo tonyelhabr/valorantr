@@ -1,4 +1,4 @@
-# valorantr
+# valorantr <img src="man/figures/logo.png" align="right" height="139" />
 
 <!-- badges: start -->
 
@@ -15,3 +15,5 @@ You can install the development version of `{valorantr}` with:
 ``` r
 remotes::install_github("tonyelhabr/valorantr")
 ```
+
+Read [the vignette](https://tonyelhabr.github.io/valorantr/articles/valorantr.html) for a walkthrough of the package.
