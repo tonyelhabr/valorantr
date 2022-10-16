@@ -44,15 +44,29 @@ vct_champs_playoffs_events <- vct_champs_events |>
 glimpse(vct_champs_playoffs_events)
 ```
 
-You may not even need to query for an event yourself. You can load pre-saved events saved in the `events` release in `valorant-data` with `load_valorant("events)`.
+We can load pre-saved events saved in the `events` release in `valorant-data` with `load_valorant("events)`.
 
 ```{r}
 #| label: presaved_events
 presaved_events <- load_valorant("events")
-glimpse(presaved_events)
+nrow(presaved_events)
 ```
 
-See all of the releases that can be read with `load_valorant()` [here] (<https://github.com/tonyelhabr/valorant-data/blob/master/README.md>).
+```{r}
+#| label: presaved_vct_champs_playoffs_events
+presaved_events |> 
+  filter(id == vct_champs_playoffs_events$id) |> 
+  glimpse()
+```
+
+See all of the releases that can be read with `load_valorant()` [here](https://github.com/tonyelhabr/valorant-data/blob/master/README.md).
+
+Some ID fields in the returned data may not be obvious. For example, what is `regionId = 7`? There are various `get_all_{x}_names()` functions written to help with ID-name mappings. In this case, `get_all_region_names()` is helpful.
+
+```{r}
+#| label: get_region_ids
+get_all_region_names()
+```
 
 ## Series
 
@@ -60,27 +74,58 @@ We can retrieve all of the series played at an event with `get_series`.
 
 ```{r}
 #| label: get_series
+cleanly_unnest_series <- function(series) {
+  series |> 
+    unnest_wider(c(team1, team2), names_sep = "_") |> 
+    clean_names()
+}
+
 vct_champs_playoffs_series <- get_series(vct_champs_playoffs_events$id) |> 
-  unnest_wider(c(team1, team2), names_sep = "_") |> 
-  clean_names()
+  cleanly_unnest_series()
 glimpse(vct_champs_playoffs_series)
 ```
 
 We can filter for a specific series from the set of series.
 
 ```{r}
-#| label: filt-series
+#| label: optic_liquid_series
 optic_liquid_series <- vct_champs_playoffs_series |> 
   filter(team1_short_name == "OPTC", team2_short_name == "TL")
 glimpse(optic_liquid_series)
 ```
 
-We can load pre-saved series without `get_series()`.
+We can use `get_all_map_names()` to identify which maps are played in the series.
+
+```{r}
+#| label: get_all_map_names
+optic_liquid_series |> 
+  hoist(
+    matches,
+    matchId = 'id',
+    mapId = 'mapId'
+  ) |> 
+  select(seriesId = id, matchId, mapId) |> 
+  unnest_longer(c(matchId, mapId)) |> 
+  inner_join(
+    get_all_map_names(),
+    by = 'mapId'
+  )
+```
+
+We can load pre-saved series with `load_valorant("series")`.
 
 ```{r}
 #| label: presaved_series
 presaved_series <- load_valorant("series")
-glimpse(presaved_series)
+nrow(presaved_series)
+```
+
+```{r}
+#| label: presaved_optic_liquid_series
+presaved_series |> 
+  filter(id == optic_liquid_series$id) |> 
+  cleanly_unnest_series() |> 
+  glimpse()
 ```
 
 ## Matches
@@ -94,6 +139,28 @@ names(optic_liquid_matches) <- make_clean_names(names(optic_liquid_matches))
 str(optic_liquid_matches, max.level = 1)
 ```
 
+We can load pre-saved matches with `load_valorant("matches")`.
+
+```{r}
+#| label: presaved_matches
+presaved_matches <- load_valorant("matches")
+length(presaved_matches)
+```
+
+```{r}
+#| label: presaved_optic_liquid_matches
+set_names_from_id_element <- function(x) {
+  match_ids <- x |> map_int(~pluck(.x, "id"))
+  x |> set_names(match_ids)
+}
+presaved_matches <- set_names_from_id_element(presaved_matches)
+
+presaved_matches[[as.character(optic_liquid_matches$id)]] |> 
+  str(max.level = 1)
+```
+
+## Players
+
 We can retrieve players involved in the series with `get_player`.
 
 ```{r}
@@ -104,26 +171,39 @@ optic_liquid_players <- optic_liquid_matches$player_stats |>
     data = map(player_id, get_player)
   )
 
+cleanly_unnest_players <- function(players) {
+  players |> 
+    hoist(
+      data,
+      "ign",
+      "first_name" = "firstName",
+      "last_name" = "lastName",
+      "team_id" = list("team", "id"),
+      "team_short_name" = list("team", "shortName")
+    ) |>
+    select(-data)
+}
+
 optic_liquid_player_names <- optic_liquid_players |> 
-  hoist(
-    data,
-    "ign",
-    "first_name" = "firstName",
-    "last_name" = "lastName",
-    "team_id" = list("team", "id"),
-    "team_short_name" = list("team", "shortName")
-  )|>
-  select(-data)
+  cleanly_unnest_players()
 glimpse(optic_liquid_player_names)
 ```
 
-We can load pre-saved matches without `get_matches()`.
+We can load pre-saved players with `load_valorant("players")`.
 
 ```{r}
-#| label: presaved_matches
-presaved_matches <- load_valorant("matches")
-length(presaved_matches)
-str(presaved_matches[[1]], max.level = 1)
+#| label: presaved_players
+presaved_players <- load_valorant("players")
+nrow(presaved_players)
+```
+
+```{r}
+#| label: presaved_optic_liquid_player_names
+presaved_players <- load_valorant("players")
+nrow(presaved_players)
+presaved_players |> 
+  filter(player_id %in% optic_liquid_player_names$player_id) |> 
+  cleanly_unnest_players()
 ```
 
 ## Match details
@@ -134,7 +214,7 @@ We can retrieve details of a match (best-of-25 rounds).
 #| label: get_match_details
 optic_liquid_match_details <- optic_liquid_matches$matches$id |> 
   map(get_match_details)
-str(optic_liquid_match_details, max.level = 2)
+str(optic_liquid_match_details, max.level = 1)
 ```
 
 One of the interesting results is x-y coordinates of players.
@@ -145,11 +225,29 @@ optic_liquid_match_details_m3 <- optic_liquid_match_details[[3]]
 glimpse(optic_liquid_match_details_m3$locations)
 ```
 
-We can load pre-saved matches without `get_match_details()`.
+We can load pre-saved match details with `load_valorant("match_details")`.
 
 ```{r}
 #| label: presaved_match_details
 presaved_match_details <- load_valorant("match_details")
 length(presaved_match_details)
-str(presaved_match_details[[1]], max.level = 2)
+```
+
+```{r}
+#| label: presaved_optic_liquid_match_details_m3
+presaved_match_details <- set_names_from_id_element(presaved_match_details)
+presaved_optic_liquid_match_details_m3 <- presaved_match_details[[as.character(optic_liquid_match_details_m3$id)]]
+presaved_optic_liquid_match_details_m3 |> str(max.level = 1)
+```
+
+We can use `get_all_weapon_names()`, `get_all_agent_names()`, `get_all_role_names()`, and `get_all_armor_names()` to augment the ID columns. Note that `get_all_agent_names()`, in addition to returning `agentId` and `agentName`, also returns `roleId`. (There is a 1-to-many mapping of agents to roles.)
+
+```{r}
+#| label: get_all_x_names
+presaved_optic_liquid_match_details_m3$economies |> 
+  select(roundId, roundNumber, playerId, weaponId, agentId, armorId) |> 
+  inner_join(get_all_weapon_names(), by = "weaponId") |> 
+  inner_join(get_all_agent_names(), by = "agentId") |> 
+  inner_join(get_all_role_names(), by = "roleId") |> 
+  inner_join(get_all_armor_names(), by = "armorId")
 ```
