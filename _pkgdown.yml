@@ -32,7 +32,7 @@ navbar:
 reference:
   - title: Main `get` functions
     contents:
-      - matches("get_(events|series|matches|match_details|player)")
+      - matches("get_(events|series|matches|match_details|player|team)")
   - title: Analytics functions
     contents:
       - ends_with("_analytics")
