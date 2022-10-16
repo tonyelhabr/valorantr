@@ -167,26 +167,9 @@ We can retrieve players involved in the series with `get_player`.
 #| label: get_player
 optic_liquid_players <- optic_liquid_matches$player_stats |> 
   distinct(player_id = playerId) |> 
-  mutate(
-    data = map(player_id, get_player)
-  )
-
-cleanly_unnest_players <- function(players) {
-  players |> 
-    hoist(
-      data,
-      "ign",
-      "first_name" = "firstName",
-      "last_name" = "lastName",
-      "team_id" = list("team", "id"),
-      "team_short_name" = list("team", "shortName")
-    ) |>
-    select(-data)
-}
-
-optic_liquid_player_names <- optic_liquid_players |> 
-  cleanly_unnest_players()
-glimpse(optic_liquid_player_names)
+  pull(player_id)
+  map_dfr(get_player)
+glimpse(optic_liquid_players)
 ```
 
 We can load pre-saved players with `load_valorant("players")`.
@@ -202,8 +185,8 @@ nrow(presaved_players)
 presaved_players <- load_valorant("players")
 nrow(presaved_players)
 presaved_players |> 
-  filter(player_id %in% optic_liquid_player_names$player_id) |> 
-  cleanly_unnest_players()
+  filter(id %in% optic_liquid_player_names$id) |> 
+  glimpse()
 ```
 
 ## Match details
