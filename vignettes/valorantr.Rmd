@@ -167,7 +167,7 @@ We can retrieve players involved in the series with `get_player`.
 #| label: get_player
 optic_liquid_players <- optic_liquid_matches$player_stats |> 
   distinct(player_id = playerId) |> 
-  pull(player_id)
+  pull(player_id) |> 
   map_dfr(get_player)
 glimpse(optic_liquid_players)
 ```
@@ -182,10 +182,8 @@ nrow(presaved_players)
 
 ```{r}
 #| label: presaved_optic_liquid_player_names
-presaved_players <- load_valorant("players")
-nrow(presaved_players)
 presaved_players |> 
-  filter(id %in% optic_liquid_player_names$id) |> 
+  filter(id %in% optic_liquid_players$id) |> 
   glimpse()
 ```
 
@@ -197,7 +195,7 @@ We can retrieve details of a match (best-of-25 rounds).
 #| label: get_match_details
 optic_liquid_match_details <- optic_liquid_matches$matches$id |> 
   map(get_match_details)
-str(optic_liquid_match_details, max.level = 1)
+str(optic_liquid_match_details, max.level = 2)
 ```
 
 One of the interesting results is x-y coordinates of players.

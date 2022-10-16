@@ -341,6 +341,19 @@ get_team <- function(team_id) {
   get_ribgg(sprintf("teams/%s", team_id))
 }
 
+#' @importFrom purrr discard keep
+dataframify_player <- function(x) {
+  kept <- x |> discard(~is.null(.x))
+  df <- kept |> discard(~length(.x) > 1) |> data.frame()
+  nonscalar <- kept |> keep(~length(.x) > 1)
+  if (length(nonscalar) > 0) {
+    for (nm in names(nonscalar)) {
+      df[[nm]] <- list(nonscalar[[nm]])
+    }
+  }
+  df
+}
+
 #' Get player
 #' 
 #' Get player info given a player ID
@@ -355,7 +368,7 @@ get_team <- function(team_id) {
 #' }
 get_player <- function(player_id) {
   url <- sprintf("players/%s", player_id) 
-  get_ribgg(url)
+  get_ribgg(url) |> dataframify_player()
 }
 
 #' Get events
