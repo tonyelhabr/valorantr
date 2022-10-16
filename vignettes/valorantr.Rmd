@@ -230,5 +230,6 @@ presaved_optic_liquid_match_details_m3$economies |>
   inner_join(get_all_weapon_names(), by = "weaponId") |> 
   inner_join(get_all_agent_names(), by = "agentId") |> 
   inner_join(get_all_role_names(), by = "roleId") |> 
-  inner_join(get_all_armor_names(), by = "armorId")
+  inner_join(get_all_armor_names(), by = "armorId") |> 
+  glimpse()
 ```
