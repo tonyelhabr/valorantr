@@ -6,6 +6,8 @@ test_that("get_all_x_names functions work", {
     expected_cols <- sprintf("%s%s", prefix, c("Id", "Name"))
     if (prefix == "agent") {
       expected_cols <- c(expected_cols, "roleId")
+    } else if (prefix == "weapon") {
+      expected_cols <- c(expected_cols, "weaponCategory")
     }
     expect_identical(colnames(res), expected_cols)
     expect_identical(nrow(res), n_rows)

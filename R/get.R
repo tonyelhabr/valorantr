@@ -93,7 +93,7 @@ get_all_role_names <- function() {
 #' all_agents <- get_all_agent_names()
 #' dplyr::glimpse(all_agents)
 get_all_agent_names <- function() {
-  ids <- list_to_id_df(
+  agents <- list_to_id_df(
     c(
       "chamber" = 17,
       "kayo" = 16,
@@ -117,7 +117,7 @@ get_all_agent_names <- function() {
     ),
     prefix = "agent"
   )
-  parent <- data.frame(
+  roles <- data.frame(
     agentName = c(
       c("astra", "brimstone", "omen", "viper"),
       c("jett", "phoenix", "raze", "reyna", "yoru", "neon"),
@@ -131,7 +131,7 @@ get_all_agent_names <- function() {
       rep(4, 4)
     )
   )
-  merge(ids, parent, by = "agentName")[, c("agentId", "agentName", "roleId")]
+  merge(agents, roles, by = "agentName")[, c("agentId", "agentName", "roleId")]
 }
 
 #' Get agent analytics
@@ -254,13 +254,13 @@ get_map_analytics <- function(region_id = NULL, event_id = NULL, patch_id = NULL
 #' 
 #' Get all weapon info
 #' 
-#' @return a data.frame with columns `weaponId` and `weaponName`
+#' @return a data.frame with columns `weaponId`, `weaponName`, and `weaponCategory`
 #' @export
 #' @examples 
 #' all_weapons <- get_all_weapon_names()
 #' dplyr::glimpse(all_weapons)
 get_all_weapon_names <- function() {
-  list_to_id_df(
+  weapons <- list_to_id_df(
     c(
       "vandal" = 4,
       "phantom" = 6,
@@ -282,6 +282,25 @@ get_all_weapon_names <- function() {
     ),
     prefix = "weapon"
   )
+  categories <- data.frame(
+    weaponName = c(
+      c("ares", "odin"),
+      c("bulldog", "phantom", "guardian", "vandal"),
+      c("judge", "bucky"),
+      c("ghost", "classic", "sheriff", "frenzy", "shorty"),
+      c("spectre", "stinger"),
+      c("marshal", "operator")
+    ),
+    weaponCategory = c(
+      rep("heavy", 2),
+      rep("rifle", 4),
+      rep("shotgun", 2),
+      rep("sidearm", 5),
+      rep("smg", 2),
+      rep("sniper", 2)
+    )
+  )
+  merge(weapons, categories, by = "weaponName")[, c("weaponId", "weaponName", "weaponCategory")]
 }
 
 #' Get weapon analytics
