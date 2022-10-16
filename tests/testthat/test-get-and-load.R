@@ -170,7 +170,7 @@ test_that("get_matches works", {
   expect_identical(names(presaved_matches[[1]]), expected_names)
 })
 
-test_that("get_matches works", {
+test_that("get_match_details works", {
   # skip_on_ci()
   skip_on_cran()
   
@@ -223,9 +223,9 @@ test_that("get_player works", {
   
   expect_identical(names(player), expected_names)
   
-  # presaved_players <- load_valorant("players")
-  # expect_gt(nrow(presaved_players), 0L)
-  # expect_identical(colnames(presaved_players), expected_names)
+  presaved_players <- load_valorant("players")
+  expect_gt(nrow(presaved_players), 0L)
+  expect_identical(colnames(presaved_players), expected_names)
 })
 
 test_that("load_valorant works", {
