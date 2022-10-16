@@ -1,4 +1,41 @@
+destination: docs
+title: valorantr
 url: https://tonyelhabr.github.io/valorantr/
+
+authors:
+  Tony ElHabr:
+    href: https://twitter.com/TonyElHabr
+    
 template:
   bootstrap: 5
+  bootswatch: yeti
+  bslib:
+    font_scale: 1
+    base_font:
+      google: "Roboto"
+    heading_font:
+      google: "Roboto"
+    code_font:
+      google: "JetBrains Mono"
+    
+navbar:
+  type: dark
+  bg: dark
+  structure:
+    left: [home, reference, articles, news]
+    right: [twitter, github, more]
+  components:
+    twitter:
+      icon: "fab fa-twitter fa-lg"
+      href: https://twitter.com/TonyElHabr
 
+reference:
+  - title: Utility
+    contents:
+      - matches("get_(events|series|matches|match_details|player)")
+  - title: Load
+    contents:
+      - load_valorant
+  - title: Utility
+    contents:
+      - starts_with("get_all_")
