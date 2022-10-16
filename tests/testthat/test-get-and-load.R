@@ -196,7 +196,7 @@ test_that("get_player works", {
   # skip_on_ci()
   skip_on_cran()
   
-  player_id <- 2716L
+  player_id <- 2841L ## fns, since he has every thing filled
   player <- get_player(player_id)
   expect_identical(player$id, player_id)
   
@@ -221,7 +221,8 @@ test_that("get_player works", {
     "news"
   )
   
-  expect_identical(names(player), expected_names)
+  ## column names may be out of order due to dataframify_player
+  expect_identical(sort(names(player)), sort(expected_names))
   
   presaved_players <- load_valorant("players")
   expect_gt(nrow(presaved_players), 0L)
