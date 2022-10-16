@@ -7,7 +7,7 @@
 get_all_role_names()
 }
 \value{
-a data.frame
+a data.frame with columns \code{roleId} and \code{roleName}
 }
 \description{
 Get all role info

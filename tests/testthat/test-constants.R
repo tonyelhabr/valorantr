@@ -3,7 +3,11 @@ test_that("get_all_x_names functions work", {
   test_names_f <- function(prefix, n_rows) {
     f <- sprintf("get_all_%s_names", prefix)
     res <- purrr::exec(f)
-    expect_identical(colnames(res), sprintf("%s%s", prefix, c("Id", "Name")))
+    expected_cols <- sprintf("%s%s", prefix, c("Id", "Name"))
+    if (prefix == "agent") {
+      expected_cols <- c(expected_cols, "roleId")
+    }
+    expect_identical(colnames(res), expected_cols)
     expect_identical(nrow(res), n_rows)
   }
  
@@ -12,7 +16,8 @@ test_that("get_all_x_names functions work", {
     "weapon" = 17L,
     "agent" = 19L,
     "map" = 8L,
-    "role" = 4L
+    "role" = 4L,
+    "armor" = 2L
   ) |> 
     purrr::iwalk(
       ~test_names_f(

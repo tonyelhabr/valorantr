@@ -7,7 +7,7 @@
 get_all_region_names()
 }
 \value{
-a data.frame
+a data.frame with columns \code{regionId} and \code{regionName}
 }
 \description{
 Get all region info

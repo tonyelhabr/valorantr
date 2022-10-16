@@ -7,10 +7,10 @@
 get_all_agent_names()
 }
 \value{
-a data.frame
+a data.frame with columns \code{agentId}, \code{agentName}, and \code{roleId}
 }
 \description{
-Get all agent info
+Get all agent info. Includes role name
 }
 \examples{
 all_agents <- get_all_agent_names()

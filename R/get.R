@@ -41,7 +41,7 @@ list_to_id_df <- function(x, prefix) {
 #' 
 #' Get all region info
 #' 
-#' @return a data.frame
+#' @return a data.frame with columns `regionId` and `regionName`
 #' @export
 #' @examples 
 #' all_regions <- get_all_region_names()
@@ -65,7 +65,7 @@ get_all_region_names <- function() {
 #' 
 #' Get all role info
 #' 
-#' @return a data.frame
+#' @return a data.frame with columns `roleId` and `roleName`
 #' @export
 #' @examples 
 #' all_roles <- get_all_role_names()
@@ -85,15 +85,15 @@ get_all_role_names <- function() {
 
 #' Get all agents
 #' 
-#' Get all agent info
+#' Get all agent info. Includes role name
 #' 
-#' @return a data.frame
+#' @return a data.frame with columns `agentId`, `agentName`, and `roleId`
 #' @export
 #' @examples 
 #' all_agents <- get_all_agent_names()
 #' dplyr::glimpse(all_agents)
 get_all_agent_names <- function() {
-  list_to_id_df(
+  ids <- list_to_id_df(
     c(
       "chamber" = 17,
       "kayo" = 16,
@@ -110,13 +110,28 @@ get_all_agent_names <- function() {
       "astra" = 15,
       "killjoy" = 5,
       "neon" = 18,
-      "cyper" = 3,
+      "cypher" = 3,
       "reyna" = 10,
       "phoenix" = 7,
       "yoru" = 14
     ),
     prefix = "agent"
   )
+  parent <- data.frame(
+    agentName = c(
+      c("astra", "brimstone", "omen", "viper"),
+      c("jett", "phoenix", "raze", "reyna", "yoru", "neon"),
+      c("sova", "kayo", "breach", "skye", "fade"),
+      c("killjoy", "cypher", "sage", "chamber")
+    ),
+    roleId = c(
+      rep(3, 4),
+      rep(2, 6),
+      rep(1, 5),
+      rep(4, 4)
+    )
+  )
+  merge(ids, parent, by = "agentName")
 }
 
 #' Get agent analytics
@@ -146,12 +161,11 @@ get_agent_analytics <- function(map_id = NULL, region_id = NULL, event_id = NULL
   get_ribgg("analytics/agents", query = q)
 }
 
-
 #' Get all maps
 #' 
 #' Get all map info
 #' 
-#' @return a data.frame
+#' @return a data.frame with columns `mapId` and `mapName`
 #' @export
 #' @examples 
 #' all_maps <- get_all_map_names()
@@ -169,6 +183,26 @@ get_all_map_names <- function() {
       "split" = 2
     ),
     prefix = "map"
+  )
+}
+
+
+#' Get all armor
+#' 
+#' Get all armor info
+#' 
+#' @return a data.frame with columns `armorId` and `armorName`
+#' @export
+#' @examples 
+#' all_armors <- get_all_armor_names()
+#' dplyr::glimpse(all_armors)
+get_all_armor_names <- function() {
+  list_to_id_df(
+    c(
+      "light" = 1,
+      "heavy" = 2
+    ),
+    prefix = "armor"
   )
 }
 
@@ -220,7 +254,7 @@ get_map_analytics <- function(region_id = NULL, event_id = NULL, patch_id = NULL
 #' 
 #' Get all weapon info
 #' 
-#' @return a data.frame
+#' @return a data.frame with columns `weaponId` and `weaponName`
 #' @export
 #' @examples 
 #' all_weapons <- get_all_weapon_names()

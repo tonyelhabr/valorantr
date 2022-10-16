@@ -7,7 +7,7 @@
 get_all_map_names()
 }
 \value{
-a data.frame
+a data.frame with columns \code{mapId} and \code{mapName}
 }
 \description{
 Get all map info

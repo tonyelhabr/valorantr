@@ -7,7 +7,7 @@
 get_all_weapon_names()
 }
 \value{
-a data.frame
+a data.frame with columns \code{weaponId} and \code{weaponName}
 }
 \description{
 Get all weapon info
