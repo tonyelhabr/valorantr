@@ -23,8 +23,10 @@
     }
     cache_function(get_all_map_names)
     cache_function(get_all_weapon_names)
+    cache_function(get_all_role_names)
     cache_function(get_all_agent_names)
     cache_function(get_all_region_names)
     cache_function(get_all_team_names)
+    cache_function(get_all_armor_names)
   }
 }
