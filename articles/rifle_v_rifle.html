@@ -155,7 +155,7 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     <span style="text-decoration: underline;">34</span>031     <span style="text-decoration: underline;">1</span>740      388 Sentinels         <span style="text-decoration: underline;">7</span>510 Shopify Rebellion</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     <span style="text-decoration: underline;">34</span>029     <span style="text-decoration: underline;">1</span>740     <span style="text-decoration: underline;">5</span>201 The Guard          141 Cloud9           </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with 90 more rows</span></span></span></code></pre></div>
-<p>And all matches (“maps”) in those series.</p>
+<p>And all matches in those series.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">set_names_from_id_element</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">match_ids</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_int</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"id"</span><span class="op">)</span><span class="op">)</span></span>
@@ -426,7 +426,88 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span>    18 ShahZaM   Sentinels           267   515 0.518</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span>    19 bang      100 Thieves         298   575 0.518</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">20</span>    20 skuba     Knights             115   222 0.518</span></span></code></pre></div>
-  </main>
+<p>Here’s a direct comparison of our lists.</p>
+<table class="table">
+<thead><tr class="header">
+<th>Player</th>
+<th align="right">Weltis Rank</th>
+<th align="right">Weltis %</th>
+<th align="right">valorantr Rank</th>
+<th align="right">valorantr %</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Cryo</td>
+<td align="right">1</td>
+<td align="right">58</td>
+<td align="right">1</td>
+<td align="right">57</td>
+</tr>
+<tr class="even">
+<td>NiSMO</td>
+<td align="right">2</td>
+<td align="right">58</td>
+<td align="right">3</td>
+<td align="right">56</td>
+</tr>
+<tr class="odd">
+<td>trent</td>
+<td align="right">3</td>
+<td align="right">58</td>
+<td align="right">2</td>
+<td align="right">56</td>
+</tr>
+<tr class="even">
+<td>Derrek</td>
+<td align="right">4</td>
+<td align="right">55</td>
+<td align="right">8</td>
+<td align="right">54</td>
+</tr>
+<tr class="odd">
+<td>dicey</td>
+<td align="right">5</td>
+<td align="right">54</td>
+<td align="right">4</td>
+<td align="right">55</td>
+</tr>
+<tr class="even">
+<td>yay</td>
+<td align="right">6</td>
+<td align="right">54</td>
+<td align="right">10</td>
+<td align="right">53</td>
+</tr>
+<tr class="odd">
+<td>valyn</td>
+<td align="right">7</td>
+<td align="right">53</td>
+<td align="right">6</td>
+<td align="right">55</td>
+</tr>
+<tr class="even">
+<td>TenZ</td>
+<td align="right">8</td>
+<td align="right">53</td>
+<td align="right">14</td>
+<td align="right">53</td>
+</tr>
+<tr class="odd">
+<td>eeiu</td>
+<td align="right">9</td>
+<td align="right">53</td>
+<td align="right">27</td>
+<td align="right">51</td>
+</tr>
+<tr class="even">
+<td>s0ms</td>
+<td align="right">10</td>
+<td align="right">53</td>
+<td align="right">21</td>
+<td align="right">51</td>
+</tr>
+</tbody>
+</table></main>
 </div>
 
 
