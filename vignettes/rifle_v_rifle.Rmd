@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-We want to replicate the results shown in the tweet below.
+Let's try to replicate the results shown in the tweet below.
 
 <blockquote class="twitter-tweet">
 
@@ -37,6 +37,8 @@ Top 10 NA players at RIFLE vs. RIFLE fights in 2022 (phantom/vandal):<br><br>1. 
 ```{=html}
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ```
+We start by identifying the events that he mentioned. (*"Data using Group Stages and Playoffs for VCT Stage 1, 2 and LCQ. International LANs not used (due to likely average tougher competition."*)
+
 ```{r}
 #| label: setup
 library(valorantr)
@@ -48,22 +50,23 @@ library(purrr)
 ```{r}
 #| label: load events
 events <- load_valorant("events")
-events_na_2022 <- events |> 
+events_na2022 <- events |> 
   inner_join(get_all_region_names(), by = "regionId") |> 
-  filter(!grepl("2021", name)) |> 
+  filter(regionName == "North America" & !grepl("2021", name)) |> 
   distinct(event_id = id, event_name = name)
-glimpse(events_na_2022)
+events_na2022
 ```
+
+And then we grab all series played at those events.
 
 ```{r}
 #| label: load series
 series <- load_valorant("series")
-teams <- get_all_team_names()
 
-series_na_2022 <- series |> 
+series_na2022 <- series |> 
   rename(event_id = eventId, start_date = startDate) |> 
   inner_join(
-    events_na_2022,
+    events_na2022,
     by = "event_id"
   ) |> 
   unnest_wider(c(team1, team2), names_sep = "_") |>
@@ -75,8 +78,10 @@ series_na_2022 <- series |>
     team2_id,
     team2_name = team2_name
   )
-glimpse(series_na_2022)
+series_na2022
 ```
+
+And all matches ("maps") in those series.
 
 ```{r}
 #| label: load matches
@@ -85,26 +90,32 @@ set_names_from_id_element <- function(x) {
   x |> set_names(match_ids)
 }
 matches <- load_valorant("matches") |> set_names_from_id_element()
-matches_na_2022 <- matches[names(matches) %in% as.character(series_na_2022$series_id)]
-team_player_mapping <- matches_na_2022 |> 
+matches_na2022 <- matches[names(matches) %in% as.character(series_na2022$series_id)]
+```
+
+Before we move on, we should stop and make some helpful "mappings" for IDs for series, matches, players, and teams.
+
+```{r}
+#| label: prep mapping
+series_player_mapping_na2022 <- matches_na2022 |> 
   map_dfr(
     ~pluck(.x, "playerStats"),
-    .id = "match_id"
+    .id = "series_id"
   ) |> 
-  distinct(match_id, team_number = teamNumber, player_id = playerId) |> 
-  mutate(across(match_id, as.integer))
+  distinct(series_id, team_number = teamNumber, player_id = playerId) |> 
+  mutate(across(series_id, as.integer))
 
 map_pluck_matches <- function(matches, element) {
   matches |> map_int(~pluck(.x, element))
 }
 
-match_team_mapping <- tibble(
-  match_id = matches_na_2022 |> map_pluck_matches("id"),
-  `1` = matches_na_2022 |> map_pluck_matches("team1Id"),
-  `2` = matches_na_2022 |> map_pluck_matches("team2Id")
+series_team_mapping_na2022 <- tibble(
+  series_id = matches_na2022 |> map_pluck_matches("id"),
+  `1` = matches_na2022 |> map_pluck_matches("team1Id"),
+  `2` = matches_na2022 |> map_pluck_matches("team2Id")
 ) |> 
   pivot_longer(
-    -match_id,
+    -series_id,
     names_to = "team_number",
     values_to = "team_id"
   ) |> 
@@ -112,22 +123,32 @@ match_team_mapping <- tibble(
     across(team_number, as.integer)
   )
 
-match_team_player_mapping <- team_player_mapping |> 
+series_team_player_mapping_na2022 <- series_player_mapping_na2022 |> 
   inner_join(
-    team_mapping |> 
-      transmute(match_id, team_number, team_id), 
-    by = c("match_id", "team_number")
+    series_team_mapping_na2022 |> 
+      transmute(series_id, team_number, team_id), 
+    by = c("series_id", "team_number")
   ) |> 
   select(-team_number)
+
+series_match_mapping_na2022 <- matches_na2022 |> 
+  map_dfr(
+    ~tibble(match_id = pluck(.x, "matches", "id")), 
+    .id = "series_id"
+  ) |> 
+  mutate(
+    across(series_id, as.integer)
+  )
 ```
+
+Next, we grab the round details of all the matches, including round events and load-outs.
 
 ```{r}
 #| label: load match details
 ## the names for matches are series ids
 ## the names for match details are match ids (individual maps between two teams)
-match_detail_ids_na_2022 <- matches_na_2022 |> map(~pluck(.x, "matches", "id")) |> flatten_int()
 match_details <- load_valorant("match_details") |> set_names_from_id_element()
-match_details_na_2022 <- match_details[names(match_details) %in% as.character(match_detail_ids_na_2022)]
+match_details_na2022 <- match_details[names(match_details) %in% as.character(series_match_mapping_na2022$match_id)]
 ```
 
 ```{r}
@@ -138,13 +159,16 @@ cleanly_pluck_from_match_details <- function(match_details, element) {
     as_tibble()
 }
 
-match_events <- match_details_na_2022 |> cleanly_pluck_from_match_details("events")
-econ <- match_details_na_2022 |> cleanly_pluck_from_match_details("economies")
+match_events_na2022 <- match_details_na2022 |> cleanly_pluck_from_match_details("events")
+econ_na2022 <- match_details_na2022 |> cleanly_pluck_from_match_details("economies")
 ```
+
+Then, we create a dataframe of weapon kills, combining the match details with the various mappings that we created before.
 
 ```{r}
 #| label: weapon kills
 players <- load_valorant("players")
+teams <- get_all_team_names()
 weapon_ids <- get_all_weapon_names() |>
   select(
     weapon_id = weaponId, 
@@ -152,7 +176,7 @@ weapon_ids <- get_all_weapon_names() |>
     weapon_category = weaponCategory
   )
 
-weapon_kills <- match_events |> 
+weapon_kills_na2022 <- match_events_na2022 |> 
   filter(!is.na(killId), damageType == "weapon") |> 
   transmute(
     across(match_id, as.integer),
@@ -165,7 +189,7 @@ weapon_kills <- match_events |>
   ) |> 
   ## data doesn"t list victim"s actual weapon, so we use what they bought in their loadout
   left_join(
-    econ |> 
+    econ_na2022 |> 
       transmute(
         across(match_id, as.integer),
         round_id = roundId,
@@ -175,22 +199,26 @@ weapon_kills <- match_events |>
     by = c("match_id", "round_id", "victim_id")
   ) |> 
   left_join(
-    match_team_player_mapping |> 
+    series_match_mapping_na2022,
+    by = "match_id"
+  ) |> 
+  left_join(
+    series_team_player_mapping_na2022 |> 
       select(
-        match_id, 
+        series_id, 
         killer_id = player_id, 
         killer_team_id = team_id
       ),
-    by = c("match_id", "killer_id")
+    by = c("series_id", "killer_id")
   ) |> 
   left_join(
-    match_team_player_mapping |> 
+    series_team_player_mapping_na2022 |> 
       select(
-        match_id, 
+        series_id, 
         victim_id = player_id, 
         victim_team_id = team_id
       ),
-    by = c("match_id", "victim_id")
+    by = c("series_id", "victim_id")
   ) |>
   left_join(
     players |> select(killer_id = id, killer_ign = ign),
@@ -216,22 +244,35 @@ weapon_kills <- match_events |>
     weapon_ids |> rename_all(~sprintf("victim_%s", .x)),
     by = "victim_weapon_id"
   )
-glimpse(weapon_kills)
+glimpse(weapon_kills_na2022)
 ```
 
+Next, we count up how many kills and deaths individual players had in their Phantom/Vandal vs. Phantom/Vandal scenarios.
+
 ```{r}
-rifle_rifle_win_rates_by_player <- bind_rows(
-  weapon_kills |> mutate(ign = killer_ign, player_id = killer_id, is_killer = TRUE),
-  weapon_kills |> mutate(ign = victim_ign, player_id = victim_id, is_killer = FALSE)
+rifle_rifle_win_rates_by_player_na2022 <- bind_rows(
+  weapon_kills_na2022 |> 
+    mutate(
+      ign = killer_ign, 
+      player_id = killer_id, 
+      is_killer = TRUE
+    ),
+  weapon_kills_na2022 |> 
+    mutate(
+      ign = victim_ign, 
+      player_id = victim_id,
+      is_killer = FALSE
+    )
 ) |> 
+  ## could due ALL rifles for real for real
   # filter(
   #   killer_weapon_category == "rifle" &
   #   victim_weapon_category == "rifle"
-  # ) |> 
+  # ) |>
   filter(
     (killer_weapon %in% c("phantom", "vandal")) &
       (victim_weapon %in% c("phantom", "vandal"))
-  ) |> 
+  ) |>
   count(player_id, ign, is_killer, sort = TRUE) |> 
   group_by(player_id, ign) |> 
   mutate(total = sum(n), prop = n / total) |> 
@@ -239,14 +280,16 @@ rifle_rifle_win_rates_by_player <- bind_rows(
   filter(is_killer) |>
   select(-is_killer) |> 
   arrange(desc(prop))
-glimpse(rifle_rifle_win_rates_by_player)
+rifle_rifle_win_rates_by_player_na2022
 ```
 
+Before we look at the results, let's make one final mapping to link players to the last teams that they played with. This adds a bit of extra information for our final results.
+
 ```{r}
-#| label: latest_player_team_mapping
-latest_player_team_mapping <- match_team_player_mapping |> 
+#| label: last_player_team_mapping_na2022
+last_player_team_mapping_na2022 <- series_team_player_mapping_na2022 |> 
   group_by(player_id) |> 
-  slice_max(match_id, n = 1, with_ties = FALSE) |> 
+  slice_max(series_id, n = 1, with_ties = FALSE) |> 
   ungroup() |> 
   select(player_id, team_id) |> 
   left_join(
@@ -255,25 +298,27 @@ latest_player_team_mapping <- match_team_player_mapping |>
   ) |> 
   left_join(
     teams |> 
-      select(team_id = id, latest_team = name),
+      select(team_id = id, last_team = name),
     by = "team_id"
   )
 ```
 
+Finally, the results. (We use a minimum of 200 fights like Weltis.) The top 10 are very close to those that were posted.
+
 ```{r}
-top_rifle_rifle_win_rates <- rifle_rifle_win_rates_by_player |> 
+top_rifle_rifle_win_rates_na2022 <- rifle_rifle_win_rates_by_player_na2022 |> 
   filter(total >= 200) |> 
   inner_join(
-    latest_player_team_mapping |> select(player_id, latest_team),
+    last_player_team_mapping_na2022 |> select(player_id, last_team),
     by = "player_id"
   ) |> 
   transmute(
     rank = row_number(desc(prop)),
     ign,
-    latest_team,
+    last_team,
     n,
     total,
     prop
   )
-top_rifle_rifle_win_rates |> head(20)
+top_rifle_rifle_win_rates_na2022 |> head(20)
 ```
