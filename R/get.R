@@ -131,7 +131,7 @@ get_all_agent_names <- function() {
       rep(4, 4)
     )
   )
-  merge(ids, parent, by = "agentName")
+  merge(ids, parent, by = "agentName")[, c("agentId", "agentName", "roleId")]
 }
 
 #' Get agent analytics

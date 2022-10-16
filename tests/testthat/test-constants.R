@@ -26,7 +26,6 @@ test_that("get_all_x_names functions work", {
       )
     )
 
-  
 })
 
 test_that("get_all_team_names works", {
