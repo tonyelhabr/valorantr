@@ -30,9 +30,12 @@ navbar:
       href: https://twitter.com/TonyElHabr
 
 reference:
-  - title: Utility
+  - title: Main `get` functions
     contents:
       - matches("get_(events|series|matches|match_details|player)")
+  - title: Analytics functions
+    contents:
+      - ends_with("_analytics")
   - title: Load
     contents:
       - load_valorant

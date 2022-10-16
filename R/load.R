@@ -5,7 +5,7 @@
 #' @importFrom curl curl_fetch_memory
 #' @importFrom qs qdeserialize
 #' @source <https://github.com/nflverse/nflreadr/blob/main/R/from_url.R#L185>
-#' @export
+#' @keywords internal
 qs_from_url <- function(url) {
   load <- curl::curl_fetch_memory(url)
   qs::qdeserialize(load$content)
