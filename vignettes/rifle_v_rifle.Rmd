@@ -81,7 +81,7 @@ series_na2022 <- series |>
 series_na2022
 ```
 
-And all matches ("maps") in those series.
+And all matches in those series.
 
 ```{r}
 #| label: load matches
@@ -322,3 +322,18 @@ top_rifle_rifle_win_rates_na2022 <- rifle_rifle_win_rates_by_player_na2022 |>
   )
 top_rifle_rifle_win_rates_na2022 |> head(20)
 ```
+
+Here's a direct comparison of our lists.
+
+| Player | Weltis Rank | Weltis % | valorantr Rank | valorantr % |
+|--------|------------:|---------:|---------------:|------------:|
+| Cryo   |           1 |       58 |              1 |          57 |
+| NiSMO  |           2 |       58 |              3 |          56 |
+| trent  |           3 |       58 |              2 |          56 |
+| Derrek |           4 |       55 |              8 |          54 |
+| dicey  |           5 |       54 |              4 |          55 |
+| yay    |           6 |       54 |             10 |          53 |
+| valyn  |           7 |       53 |              6 |          55 |
+| TenZ   |           8 |       53 |             14 |          53 |
+| eeiu   |           9 |       53 |             27 |          51 |
+| s0ms   |          10 |       53 |             21 |          51 |
