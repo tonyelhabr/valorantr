@@ -7,10 +7,10 @@ if(file.exists(path_r_profile)) {
 rm('path_r_profile')
 
 if (interactive()) {
-  # suppressMessages(library(devtools))
-  # suppressMessages(library(usethis))
-  # suppressMessages(library(pkgdown))
-  # pkgload::load_all()
+  suppressMessages(library(devtools))
+  suppressMessages(library(usethis))
+  suppressMessages(library(pkgdown))
+  pkgload::load_all()
 }
 
 
