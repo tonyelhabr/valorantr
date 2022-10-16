@@ -33,5 +33,5 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 VignetteBuilder: knitr
-URL: https://tonyelhabr.github.io/valorantr/
+URL: https://tonyelhabr.github.io/valorantr/, https://github.com/tonyelhabr/valorantr
 Config/testthat/edition: 3

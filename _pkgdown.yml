@@ -1,3 +1,4 @@
+destination: docs
 title: valorantr
 url: https://tonyelhabr.github.io/valorantr/
 
@@ -20,13 +21,6 @@ template:
 navbar:
   type: dark
   bg: dark
-  structure:
-    left: [home, reference, articles, news]
-    right: [twitter, github, more]
-  components:
-    twitter:
-      icon: "fab fa-twitter fa-lg"
-      href: https://twitter.com/TonyElHabr
 
 reference:
   - title: Main `get` functions
