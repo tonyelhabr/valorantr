@@ -343,7 +343,7 @@ get_team <- function(team_id) {
 
 #' @importFrom purrr discard keep
 dataframify_player <- function(x) {
-  kept <- x |> discard(~is.null(.x))
+  kept <- x |> discard(~is.null(.x) | length(.x) == 0)
   df <- kept |> discard(~length(.x) > 1) |> data.frame()
   nonscalar <- kept |> keep(~length(.x) > 1)
   if (length(nonscalar) > 0) {
