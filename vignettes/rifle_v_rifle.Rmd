@@ -74,9 +74,9 @@ series_na2022 <- series |>
     series_id = id, 
     event_id, 
     team1_id,
-    team1_name = team1_name,
+    team1_name,
     team2_id,
-    team2_name = team2_name
+    team2_name
   )
 series_na2022
 ```
