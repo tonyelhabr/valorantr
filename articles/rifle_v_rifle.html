@@ -14,12 +14,12 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.2/font.css" rel="stylesheet">
-<link href="../deps/JetBrains_Mono-0.4.2/font.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.7/font.css" rel="stylesheet">
+<link href="../deps/JetBrains_Mono-0.4.7/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Calculating rifle vs. rifle success rates">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Calculating rifle vs. rifle success rates">
 <meta property="og:description" content="valorantr">
 <meta property="og:image" content="https://tonyelhabr.github.io/valorantr/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -102,11 +102,27 @@
 <blockquote class="twitter-tweet">
 <p lang="en" dir="ltr">
 </p>
-<p>Top 10 NA players at RIFLE vs. RIFLE fights in 2022 (phantom/vandal):<br><br>1. <a href="https://twitter.com/Cryocells_?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@Cryocells_</span></a> (58%)<br>2. <a href="https://twitter.com/NiSMO_VAL?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@NiSMO_VAL</span></a> (58%)<br>3. <a href="https://twitter.com/trentFPS?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@trentFPS</span></a> (58%)<br>4. <a href="https://twitter.com/DerrekOW?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@DerrekOW</span></a> (55%)<br>5. <a href="https://twitter.com/diceyzx?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@diceyzx</span></a> (54%)<br>6. <a href="https://twitter.com/yay?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@yay</span></a> (54%)<br>7. <a href="https://twitter.com/valyngod?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@valyngod</span></a> (53%)<br>8. <a href="https://twitter.com/TenZOfficial?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@TenZOfficial</span></a> (53%)<br>9. <a href="https://twitter.com/777eeiu?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@777eeiu</span></a> (53%)<br>10. <a href="https://twitter.com/s0mcs?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@s0mcs</span></a> (53%)<br><br>What surprises you?</p>
+<p>Top 10 NA players at RIFLE vs. RIFLE fights in 2022
+(phantom/vandal):<br><br>1.
+<a href="https://twitter.com/Cryocells_?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@Cryocells_</span></a> (58%)<br>2.
+<a href="https://twitter.com/NiSMO_VAL?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@NiSMO_VAL</span></a> (58%)<br>3.
+<a href="https://twitter.com/trentFPS?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@trentFPS</span></a> (58%)<br>4.
+<a href="https://twitter.com/DerrekOW?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@DerrekOW</span></a> (55%)<br>5.
+<a href="https://twitter.com/diceyzx?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@diceyzx</span></a> (54%)<br>6.
+<a href="https://twitter.com/yay?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@yay</span></a> (54%)<br>7.
+<a href="https://twitter.com/valyngod?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@valyngod</span></a> (53%)<br>8.
+<a href="https://twitter.com/TenZOfficial?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@TenZOfficial</span></a> (53%)<br>9.
+<a href="https://twitter.com/777eeiu?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@777eeiu</span></a> (53%)<br>10.
+<a href="https://twitter.com/s0mcs?ref_src=twsrc%5Etfw" class="external-link"><span class="citation">@s0mcs</span></a> (53%)<br><br>What surprises you?</p>
 
-<p>— Weltis (<span class="citation">@WeltisGames</span>) <a href="https://twitter.com/WeltisGames/status/1578931912516636672?ref_src=twsrc%5Etfw" class="external-link">October 9, 2022</a></p>
+<p>— Weltis (<span class="citation">@WeltisGames</span>)
+<a href="https://twitter.com/WeltisGames/status/1578931912516636672?ref_src=twsrc%5Etfw" class="external-link">October
+9, 2022</a></p>
 </blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p>We start by identifying the events that he mentioned. (<em>“Data using Group Stages and Playoffs for VCT Stage 1, 2 and LCQ. International LANs not used (due to likely average tougher competition.”</em>)</p>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p>We start by identifying the events that he mentioned. (<em>“Data
+using Group Stages and Playoffs for VCT Stage 1, 2 and LCQ.
+International LANs not used (due to likely average tougher
+competition.”</em>)</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tonyelhabr.github.io/valorantr/">valorantr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
@@ -116,17 +132,15 @@
 <code class="sourceCode R"><span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_valorant.html">load_valorant</a></span><span class="op">(</span><span class="st">"events"</span><span class="op">)</span></span>
 <span><span class="va">events_na2022</span> <span class="op">&lt;-</span> <span class="va">events</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">inner_join</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_all_region_names.html">get_all_region_names</a></span><span class="op">(</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"regionId"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">regionName</span> <span class="op">==</span> <span class="st">"North America"</span> <span class="op">&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"2021"</span>, <span class="va">name</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">regionName</span> <span class="op">==</span> <span class="st">"North America"</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"2022"</span>, <span class="va">name</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span>event_id <span class="op">=</span> <span class="va">id</span>, event_name <span class="op">=</span> <span class="va">name</span><span class="op">)</span></span>
 <span><span class="va">events_na2022</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 2</span></span></span>
-<span><span class="co">#&gt;   event_id event_name                                                </span></span>
-<span><span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     <span style="text-decoration: underline;">1</span>740 VCT 2022 - North America - Last Chance Qualifier          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     <span style="text-decoration: underline;">1</span>490 VCT North America 2022 - Stage 2 Challengers - Playoffs   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     <span style="text-decoration: underline;">1</span>461 VCT North America 2022 - Stage 2 Challengers - Group Stage</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     <span style="text-decoration: underline;">1</span>286 VCT North America 2022 - Stage 1 Challengers - Main Event </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     <span style="text-decoration: underline;">1</span>199 VCT North America 2022 - Stage 1 Challengers - Group Stage</span></span></code></pre></div>
+<span><span class="co">#&gt;   event_id                                                 event_name</span></span>
+<span><span class="co">#&gt; 1     1740           VCT 2022 - North America - Last Chance Qualifier</span></span>
+<span><span class="co">#&gt; 2     1490    VCT North America 2022 - Stage 2 Challengers - Playoffs</span></span>
+<span><span class="co">#&gt; 3     1461 VCT North America 2022 - Stage 2 Challengers - Group Stage</span></span>
+<span><span class="co">#&gt; 4     1286  VCT North America 2022 - Stage 1 Challengers - Main Event</span></span>
+<span><span class="co">#&gt; 5     1199 VCT North America 2022 - Stage 1 Challengers - Group Stage</span></span></code></pre></div>
 <p>And then we grab all series played at those events.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">series</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_valorant.html">load_valorant</a></span><span class="op">(</span><span class="st">"series"</span><span class="op">)</span></span>
@@ -137,7 +151,7 @@
 <span>    <span class="va">events_na2022</span>,</span>
 <span>    by <span class="op">=</span> <span class="st">"event_id"</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">team1</span>, <span class="va">team2</span><span class="op">)</span>, names_sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">team1</span>, <span class="va">team2</span><span class="op">)</span>, names_sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span></span>
 <span>    series_id <span class="op">=</span> <span class="va">id</span>, </span>
 <span>    <span class="va">event_id</span>, </span>
@@ -160,7 +174,7 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     <span style="text-decoration: underline;">34</span>030     <span style="text-decoration: underline;">1</span>740      617 FaZe Clan          305 100 Thieves      </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     <span style="text-decoration: underline;">34</span>031     <span style="text-decoration: underline;">1</span>740      388 Sentinels         <span style="text-decoration: underline;">7</span>510 Shopify Rebellion</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     <span style="text-decoration: underline;">34</span>029     <span style="text-decoration: underline;">1</span>740     <span style="text-decoration: underline;">5</span>201 The Guard          141 Cloud9           </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 90 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 90 more rows</span></span></span></code></pre></div>
 <p>And all matches in those series.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">set_names_from_id_element</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
@@ -169,10 +183,11 @@
 <span><span class="op">}</span></span>
 <span><span class="va">matches</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_valorant.html">load_valorant</a></span><span class="op">(</span><span class="st">"matches"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">set_names_from_id_element</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">matches_na2022</span> <span class="op">&lt;-</span> <span class="va">matches</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">matches</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">series_na2022</span><span class="op">$</span><span class="va">series_id</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
-<p>Before we move on, we should stop and make some helpful “mappings” for IDs for series, matches, players, and teams.</p>
+<p>Before we move on, we should stop and make some helpful “mappings”
+for IDs for series, matches, players, and teams.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">series_player_mapping_na2022</span> <span class="op">&lt;-</span> <span class="va">matches_na2022</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_dfr</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html" class="external-link">map_dfr</a></span><span class="op">(</span></span>
 <span>    <span class="op">~</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"playerStats"</span><span class="op">)</span>,</span>
 <span>    .id <span class="op">=</span> <span class="st">"series_id"</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -200,20 +215,21 @@
 <span><span class="va">series_team_player_mapping_na2022</span> <span class="op">&lt;-</span> <span class="va">series_player_mapping_na2022</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">inner_join</a></span><span class="op">(</span></span>
 <span>    <span class="va">series_team_mapping_na2022</span> <span class="op">|&gt;</span> </span>
-<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">transmute</a></span><span class="op">(</span><span class="va">series_id</span>, <span class="va">team_number</span>, <span class="va">team_id</span><span class="op">)</span>, </span>
+<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/transmute.html" class="external-link">transmute</a></span><span class="op">(</span><span class="va">series_id</span>, <span class="va">team_number</span>, <span class="va">team_id</span><span class="op">)</span>, </span>
 <span>    by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"series_id"</span>, <span class="st">"team_number"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">team_number</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">series_match_mapping_na2022</span> <span class="op">&lt;-</span> <span class="va">matches_na2022</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_dfr</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html" class="external-link">map_dfr</a></span><span class="op">(</span></span>
 <span>    <span class="op">~</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>match_id <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">.x</span>, <span class="st">"matches"</span>, <span class="st">"id"</span><span class="op">)</span><span class="op">)</span>, </span>
 <span>    .id <span class="op">=</span> <span class="st">"series_id"</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="va">series_id</span>, <span class="va">as.integer</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p>Next, we grab the round details of all the matches, including round events and load-outs.</p>
+<p>Next, we grab the round details of all the matches, including round
+events and load-outs.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## the names for matches are series ids</span></span>
 <span><span class="co">## the names for match details are match ids (individual maps between two teams)</span></span>
@@ -222,13 +238,23 @@
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cleanly_pluck_from_match_details</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">match_details</span>, <span class="va">element</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">match_details</span> <span class="op">|&gt;</span> </span>
-<span>    <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_dfr</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">element</span><span class="op">)</span>, .id <span class="op">=</span> <span class="st">"match_id"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>    <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html" class="external-link">map_dfr</a></span><span class="op">(</span>\<span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">element</span><span class="op">)</span>, .id <span class="op">=</span> <span class="st">"match_id"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="va">match_id</span>, <span class="va">as.integer</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="va">match_events_na2022</span> <span class="op">&lt;-</span> <span class="va">match_details_na2022</span> <span class="op">|&gt;</span> <span class="fu">cleanly_pluck_from_match_details</span><span class="op">(</span><span class="st">"events"</span><span class="op">)</span></span>
-<span><span class="va">econ_na2022</span> <span class="op">&lt;-</span> <span class="va">match_details_na2022</span> <span class="op">|&gt;</span> <span class="fu">cleanly_pluck_from_match_details</span><span class="op">(</span><span class="st">"economies"</span><span class="op">)</span></span></code></pre></div>
-<p>Then, we create a dataframe of weapon kills, combining the match details with the various mappings that we created before.</p>
+<span><span class="va">match_events_na2022</span> <span class="op">&lt;-</span> <span class="fu">cleanly_pluck_from_match_details</span><span class="op">(</span></span>
+<span>  <span class="va">match_details_na2022</span>, </span>
+<span>  <span class="st">"events"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">econ_na2022</span> <span class="op">&lt;-</span> <span class="fu">cleanly_pluck_from_match_details</span><span class="op">(</span></span>
+<span>  <span class="va">match_details_na2022</span>, </span>
+<span>  <span class="st">"economies"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>Then, we create a dataframe of weapon kills, combining the match
+details with the various mappings that we created before.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">players</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/load_valorant.html">load_valorant</a></span><span class="op">(</span><span class="st">"players"</span><span class="op">)</span></span>
 <span><span class="va">teams</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_all_team_names.html">get_all_team_names</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -241,8 +267,8 @@
 <span></span>
 <span><span class="va">weapon_kills_na2022</span> <span class="op">&lt;-</span> <span class="va">match_events_na2022</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">killId</span><span class="op">)</span>, <span class="va">damageType</span> <span class="op">==</span> <span class="st">"weapon"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">transmute</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="va">match_id</span>, <span class="va">as.integer</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span></span>
+<span>    <span class="va">match_id</span>,</span>
 <span>    round_id <span class="op">=</span> <span class="va">roundId</span>,</span>
 <span>    round_number <span class="op">=</span> <span class="va">roundNumber</span>,</span>
 <span>    kill_id <span class="op">=</span> <span class="va">killId</span>,</span>
@@ -253,8 +279,8 @@
 <span>  <span class="co">## data doesn"t list victim"s actual weapon, so we use what they bought in their loadout</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span>
 <span>    <span class="va">econ_na2022</span> <span class="op">|&gt;</span> </span>
-<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">transmute</a></span><span class="op">(</span></span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="va">match_id</span>, <span class="va">as.integer</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span></span>
+<span>        <span class="va">match_id</span>,</span>
 <span>        round_id <span class="op">=</span> <span class="va">roundId</span>,</span>
 <span>        victim_id <span class="op">=</span> <span class="va">playerId</span>, </span>
 <span>        victim_weapon_id <span class="op">=</span> <span class="va">weaponId</span></span>
@@ -329,9 +355,10 @@
 <span><span class="co">#&gt; $ killer_weapon_category <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "sidearm", "sidearm", "sidearm", "sidearm", "si…</span></span>
 <span><span class="co">#&gt; $ victim_weapon          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ghost", "classic", "classic", "ghost", "ghost"…</span></span>
 <span><span class="co">#&gt; $ victim_weapon_category <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "sidearm", "sidearm", "sidearm", "sidearm", "si…</span></span></code></pre></div>
-<p>Next, we count up how many kills and deaths individual players had in their Phantom/Vandal vs. Phantom/Vandal scenarios.</p>
+<p>Next, we count up how many kills and deaths individual players had in
+their Phantom/Vandal vs. Phantom/Vandal scenarios.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">rifle_rifle_win_rates_by_player_na2022</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_rows</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">rifle_rifle_win_rates_by_player_na2022</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span></span>
 <span>  <span class="va">weapon_kills_na2022</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>      ign <span class="op">=</span> <span class="va">killer_ign</span>, </span>
@@ -375,8 +402,10 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      <span style="text-decoration: underline;">1</span>804 valyn       336   616 0.545</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      <span style="text-decoration: underline;">3</span>352 penny        99   182 0.544</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      <span style="text-decoration: underline;">7</span>025 wippie      135   250 0.54 </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 75 more rows</span></span></span></code></pre></div>
-<p>Before we look at the results, let’s make one final mapping to link players to the last teams that they played with. This adds a bit of extra information for our final results.</p>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 75 more rows</span></span></span></code></pre></div>
+<p>Before we look at the results, let’s make one final mapping to link
+players to the last teams that they played with. This adds a bit of
+extra information for our final results.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">last_player_team_mapping_na2022</span> <span class="op">&lt;-</span> <span class="va">series_team_player_mapping_na2022</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">player_id</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -392,7 +421,8 @@
 <span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span>team_id <span class="op">=</span> <span class="va">id</span>, last_team <span class="op">=</span> <span class="va">name</span><span class="op">)</span>,</span>
 <span>    by <span class="op">=</span> <span class="st">"team_id"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p>Finally, the results. (We use a minimum of 200 fights like Weltis.) The top 10 are very close to those that were posted.</p>
+<p>Finally, the results. (We use a minimum of 200 fights like Weltis.)
+The top 10 are very close to those that were posted.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">top_rifle_rifle_win_rates_na2022</span> <span class="op">&lt;-</span> <span class="va">rifle_rifle_win_rates_by_player_na2022</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">total</span> <span class="op">&gt;=</span> <span class="fl">200</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -400,38 +430,38 @@
 <span>    <span class="va">last_player_team_mapping_na2022</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">player_id</span>, <span class="va">last_team</span><span class="op">)</span>,</span>
 <span>    by <span class="op">=</span> <span class="st">"player_id"</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">transmute</a></span><span class="op">(</span></span>
-<span>    rank <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/ranking.html" class="external-link">row_number</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">prop</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/transmute.html" class="external-link">transmute</a></span><span class="op">(</span></span>
+<span>    rank <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html" class="external-link">row_number</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">prop</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    <span class="va">ign</span>,</span>
 <span>    <span class="va">last_team</span>,</span>
 <span>    <span class="va">n</span>,</span>
 <span>    <span class="va">total</span>,</span>
 <span>    <span class="va">prop</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="va">top_rifle_rifle_win_rates_na2022</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">top_rifle_rifle_win_rates_na2022</span>, <span class="fl">20</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 20 × 6</span></span></span>
-<span><span class="co">#&gt;     rank ign       last_team             n total  prop</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 Cryocells XSET                209   367 0.569</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     2 trent     The Guard           344   614 0.560</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     3 NiSMO     Ghost Gaming        122   218 0.560</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     4 dicey     FaZe Clan           199   361 0.551</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     5 Zander    Version1            149   272 0.548</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     6 valyn     The Guard           336   616 0.545</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     7 wippie    Version1            135   250 0.54 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     8 Derrek    100 Thieves         287   535 0.536</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     9 BcJ       XSET                279   522 0.534</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    10 yay       OpTic Gaming        156   294 0.531</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>    11 supamen   FaZe Clan           360   679 0.530</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span>    12 crashies  OpTic Gaming        266   502 0.530</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span>    13 SicK      Sentinels           169   319 0.530</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span>    14 TenZ      Sentinels           195   371 0.526</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span>    15 neT       The Guard           281   538 0.522</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span>    16 Moose     Shopify Rebellion   272   523 0.520</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span>    17 Marved    OpTic Gaming        307   591 0.519</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span>    18 ShahZaM   Sentinels           267   515 0.518</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span>    19 bang      100 Thieves         298   575 0.518</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">20</span>    20 skuba     Knights             115   222 0.518</span></span></code></pre></div>
+<span><span class="co">#&gt;     rank ign       last_team               n total  prop</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 Cryocells XSET (Inactive)       209   367 0.569</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     2 trent     The Guard             344   614 0.560</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     3 NiSMO     Ghost Gaming          122   218 0.560</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     4 dicey     FaZe Clan             199   361 0.551</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     5 Zander    Version1 (Inactive)   149   272 0.548</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     6 valyn     The Guard             336   616 0.545</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     7 wippie    Version1 (Inactive)   135   250 0.54 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     8 Derrek    100 Thieves           287   535 0.536</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     9 BcJ       XSET (Inactive)       279   522 0.534</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    10 yay       OpTic Gaming          156   294 0.531</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>    11 supamen   FaZe Clan             360   679 0.530</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span>    12 crashies  OpTic Gaming          266   502 0.530</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span>    13 SicK      Sentinels             169   319 0.530</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span>    14 TenZ      Sentinels             195   371 0.526</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span>    15 neT       The Guard             281   538 0.522</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span>    16 Moose     Shopify Rebellion     272   523 0.520</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span>    17 Marved    OpTic Gaming          307   591 0.519</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span>    18 ShahZaM   Sentinels             267   515 0.518</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span>    19 bang      100 Thieves           298   575 0.518</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">20</span>    20 skuba     Knights               115   222 0.518</span></span></code></pre></div>
 <p>Here’s a direct comparison of our lists.</p>
 <table class="table">
 <thead><tr class="header">
@@ -525,7 +555,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
     </footer>
