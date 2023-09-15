@@ -6,7 +6,7 @@
 #' @importFrom httr parse_url build_url
 get_ribgg <- function(endpoint, query = NULL, ...) {
   
-  url <- sprintf("https://backend-prod.rib.gg/v1/%s", endpoint)
+  url <- sprintf("https://be-prod.rib.gg/v1/%s", endpoint)
   if (!is.null(query)) {
     parsed_url <- httr::parse_url(url)
     parsed_url$query <- query
