@@ -21,7 +21,7 @@ load_valorant <- function(tag, ...) {
   releases <- piggyback::pb_releases(valorant_repo, ...)
   release_exists <- any(tag == releases$release_name)
   if (isFALSE(release_exists)) {
-    stop(sprintf('Release for `tag = "%s"` does not exist.'))
+    stop(sprintf('Release for `tag = "%s"` does not exist.', tag))
   }
   url <- sprintf('https://github.com/%s/releases/download/%s/%s.qs', valorant_repo, tag, tag)
   qs_from_url(url)

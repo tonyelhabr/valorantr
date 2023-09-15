@@ -7,7 +7,7 @@ test_that("get_events works", {
   expect_identical(nrow(events), n_results)
   # expect_identical(events$id, c(1866L, 1865L, 1858L))
   
-  expected_names <- c(
+  expected_columns <- c(
     "id",
     "name",
     "shortName",
@@ -25,7 +25,8 @@ test_that("get_events works", {
     "loserStageCount",
     "live",
     "rank",
-    "bracketJson",
+    "vctRegions",
+    "divisions",
     "pmtJson",
     "parent",
     "parentId",
@@ -39,7 +40,7 @@ test_that("get_events works", {
     "country"
   )
   
-  expect_identical(colnames(events), expected_names)
+  expect_setequal(colnames(events), expected_columns)
   
   ## Works without query
   n_results <- 4L
@@ -48,7 +49,20 @@ test_that("get_events works", {
   
   presaved_events <- load_valorant("events")
   expect_gt(nrow(presaved_events), 0L)
-  expect_identical(colnames(presaved_events), expected_names)
+  
+  defunct_columns <- c("bracketJson")
+  ## some new columns may have been added since pre-saved data was last refreshed,
+  ##   so just check that the pre-saved column names are a subset of the column names
+  ##   that we expect to be returned from the live API
+  expect_true(
+    all(
+      setdiff(
+        colnames(presaved_events),
+        defunct_columns
+      ) %in% 
+        expected_columns
+    )
+  )
 })
 
 test_that("get_series works", {
@@ -86,11 +100,13 @@ test_that("get_series works", {
     )
   )
   
-  expected_names <- c(
+  expected_columns <- c(
     "id",
     "eventId",
     "team1Id",
     "team2Id",
+    "team1Score",
+    "team2Score",
     "startDate",
     "bestOf",
     "stage",
@@ -104,7 +120,10 @@ test_that("get_series works", {
     "pmtStatus",
     "pmtRedditUrl",
     "pmtJson",
+    "pickban",
+    "eventChildLabel",
     "eventName",
+    "eventRegionId",
     "eventSlug",
     "eventLogoUrl",
     "parentEventId",
@@ -115,11 +134,11 @@ test_that("get_series works", {
     "matches"
   )
   
-  expect_identical(colnames(series), expected_names)
+  expect_setequal(colnames(series), expected_columns)
   
   presaved_series <- load_valorant("series")
   expect_gt(nrow(presaved_series), 0L)
-  expect_identical(colnames(presaved_series), expected_names)
+  expect_true(all(colnames(presaved_series) %in% expected_columns))
 })
 
 test_that("get_matches works", {
@@ -132,11 +151,13 @@ test_that("get_matches works", {
   expect_identical(matches$id, series_id)
   expect_identical(nrow(matches$matches), 3L)
   
-  expected_names <- c(
+  expected_columns <- c(
     "id",
     "eventId",
     "team1Id",
     "team2Id",
+    "team1Score",
+    "team2Score",
     "startDate",
     "bestOf",
     "stage",
@@ -150,9 +171,12 @@ test_that("get_matches works", {
     "pmtStatus",
     "pmtRedditUrl",
     "pmtJson",
+    "pickban",
     "eventName",
     "eventSlug",
+    "eventChildLabel",
     "eventLogoUrl",
+    "eventRegionId",
     "parentEventId",
     "parentEventName",
     "parentEventSlug",
@@ -163,11 +187,20 @@ test_that("get_matches works", {
     "playerStats"
   )
   
-  expect_identical(names(matches), expected_names)
+  expect_setequal(names(matches), expected_columns)
   
   presaved_matches <- load_valorant("matches")
   expect_gt(length(presaved_matches), 0L)
-  expect_identical(names(presaved_matches[[1]]), expected_names)
+  defunct_columns <- c("defaultMatch")
+  expect_true(
+    all(
+      setdiff(
+        names(presaved_matches[[1]]),
+        defunct_columns
+      ) 
+      %in% expected_columns
+    )
+  )
 })
 
 test_that("get_match_details works", {
@@ -178,18 +211,19 @@ test_that("get_match_details works", {
   match_details <- get_match_details(match_id)
   expect_identical(match_details$id, match_id)
   
-  expected_names <- c(
+  expected_columns <- c(
     "id",
+    "playerStats",
     "events",
     "locations",
     "economies"
   )
   
-  expect_identical(names(match_details), expected_names)
+  expect_setequal(names(match_details), expected_columns)
   
   presaved_match_details <- load_valorant("match_details")
   expect_gt(length(presaved_match_details), 0L)
-  expect_identical(names(presaved_match_details[[1]]), expected_names)
+  expect_true(all(names(presaved_match_details[[1]]) %in% expected_columns))
 })
 
 test_that("get_player works", {
@@ -200,7 +234,7 @@ test_that("get_player works", {
   player <- get_player(player_id)
   expect_identical(player$id, player_id)
   
-  expected_names <- c(
+  expected_columns <- c(
     "id",
     "ign",
     "firstName",
@@ -214,19 +248,23 @@ test_that("get_player works", {
     "youtubeUrl",
     "imageUrl",
     "firestoreId",
-    "previousRiotPlayerIds",
+    "teamPlayerHistoryId",
+    "teamId",
     "startDate",
     "role",
+    "igl",
+    "previousRiotPlayerIds",
     "team",
+    "career",
     "news"
   )
   
   ## column names may be out of order due to dataframify_player
-  expect_identical(sort(names(player)), sort(expected_names))
+  expect_setequal(names(player), expected_columns)
   
   presaved_players <- load_valorant("players")
   expect_gt(nrow(presaved_players), 0L)
-  expect_identical(colnames(presaved_players), expected_names)
+  expect_true(all(colnames(presaved_players) %in% expected_columns))
 })
 
 test_that("load_valorant works", {
@@ -235,7 +273,7 @@ test_that("load_valorant works", {
   
   expect_error(
     load_valorant("foo"),
-    regexpr = "does not exist"
+    regexp = "does not exist"
   )
   
 })
