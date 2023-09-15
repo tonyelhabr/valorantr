@@ -52,7 +52,7 @@ library(purrr)
 events <- load_valorant("events")
 events_na2022 <- events |> 
   inner_join(get_all_region_names(), by = "regionId") |> 
-  filter(regionName == "North America" & !grepl("2021", name)) |> 
+  filter(regionName == "North America" & grepl("2022", name)) |> 
   distinct(event_id = id, event_name = name)
 events_na2022
 ```
@@ -155,12 +155,21 @@ match_details_na2022 <- match_details[names(match_details) %in% as.character(ser
 #| label: load events and economies
 cleanly_pluck_from_match_details <- function(match_details, element) {
   match_details |> 
-    map_dfr(~pluck(.x, element), .id = "match_id") |> 
-    as_tibble()
+    map_dfr(\(.x) pluck(.x, element), .id = "match_id") |> 
+    as_tibble() |> 
+    mutate(
+      across(match_id, as.integer)
+    )
 }
 
-match_events_na2022 <- match_details_na2022 |> cleanly_pluck_from_match_details("events")
-econ_na2022 <- match_details_na2022 |> cleanly_pluck_from_match_details("economies")
+match_events_na2022 <- cleanly_pluck_from_match_details(
+  match_details_na2022, 
+  "events"
+)
+econ_na2022 <- cleanly_pluck_from_match_details(
+  match_details_na2022, 
+  "economies"
+)
 ```
 
 Then, we create a dataframe of weapon kills, combining the match details with the various mappings that we created before.
@@ -178,8 +187,8 @@ weapon_ids <- get_all_weapon_names() |>
 
 weapon_kills_na2022 <- match_events_na2022 |> 
   filter(!is.na(killId), damageType == "weapon") |> 
-  transmute(
-    across(match_id, as.integer),
+  select(
+    match_id,
     round_id = roundId,
     round_number = roundNumber,
     kill_id = killId,
@@ -190,8 +199,8 @@ weapon_kills_na2022 <- match_events_na2022 |>
   ## data doesn"t list victim"s actual weapon, so we use what they bought in their loadout
   left_join(
     econ_na2022 |> 
-      transmute(
-        across(match_id, as.integer),
+      select(
+        match_id,
         round_id = roundId,
         victim_id = playerId, 
         victim_weapon_id = weaponId
@@ -250,6 +259,7 @@ glimpse(weapon_kills_na2022)
 Next, we count up how many kills and deaths individual players had in their Phantom/Vandal vs. Phantom/Vandal scenarios.
 
 ```{r}
+#| label: rifle_rifle_win_rates_by_player_na2022
 rifle_rifle_win_rates_by_player_na2022 <- bind_rows(
   weapon_kills_na2022 |> 
     mutate(
@@ -306,6 +316,7 @@ last_player_team_mapping_na2022 <- series_team_player_mapping_na2022 |>
 Finally, the results. (We use a minimum of 200 fights like Weltis.) The top 10 are very close to those that were posted.
 
 ```{r}
+#| label: top_rifle_rifle_win_rates_na2022
 top_rifle_rifle_win_rates_na2022 <- rifle_rifle_win_rates_by_player_na2022 |> 
   filter(total >= 200) |> 
   inner_join(
@@ -320,7 +331,7 @@ top_rifle_rifle_win_rates_na2022 <- rifle_rifle_win_rates_by_player_na2022 |>
     total,
     prop
   )
-top_rifle_rifle_win_rates_na2022 |> head(20)
+head(top_rifle_rifle_win_rates_na2022, 20)
 ```
 
 Here's a direct comparison of our lists.
